@@ -8,3 +8,4 @@ Notes from learning for RHCSA &amp; RHCA exams. Based largely on "RHCSA & RHCE R
 * 4: [Managing Software Packages](software_packages.md)
 * 5: [Server Virtualization and Network Installing RHEL7](server_virtualization_network_installing.md)
 * 6: [Booting and Updating the Kernel](booting_kernel_logging.md)
+* 7: [Managing Users and Groups](users_and_groups.md)
