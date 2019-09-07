@@ -15,3 +15,4 @@ Notes from learning for RHCSA &amp; RHCA exams. Based largely on "RHCSA & RHCE R
 * 11: [Administering Network Interfaces and Network Clients](network_interfaces_and_clients.md)
 * 12: [Securing Access with SSH and TCP Wrappers](ssh_tcp_wrappers.md)
 * 13: [Writing Shell Scripts](writing_shell_scripts.md)
+* 14 [Firewalld and Kerberos](firewalld_and_kerberos.md)
