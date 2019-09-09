@@ -16,3 +16,6 @@ Notes from learning for RHCSA &amp; RHCA exams. Based largely on "RHCSA & RHCE R
 * 12: [Securing Access with SSH and TCP Wrappers](ssh_tcp_wrappers.md)
 * 13: [Writing Shell Scripts](writing_shell_scripts.md)
 * 14 [Firewalld and Kerberos](firewalld_and_kerberos.md)
+* 15 [Tuning Kernel Parameters, Reporting System Usage, and Logging Remotely](kernel_parameters.md)
+* 16 [File Storage with Samba](file_storage_with_samba.md)
+* 17 [Hosting Websites with Apache](hosting_with_apache.md)

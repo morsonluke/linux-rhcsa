@@ -26,3 +26,10 @@ grep -i kerberos /etc/services
 | Ticket Granting Service (TGS) | A service that runs on the KDC to generate and issue service tickets to clients |
 | Ticket Granting Ticket (TGT) | An initial encrypted digital certificate that is used to identify a client to the TGS at the time of requesting service tickets. |
 
+1. A user contacts the AS for initial auth via the `kinit` command
+2. The AS asks for the user's password, validates it, and generates a TGT for the user. It also produces a session key.
+3. The AS returns the credentials (TGT plus the session key) to the user which the user decrypts by entering their password. The TGT has a limited validity and is set to expire  aftet a few hours
+4. The user sends the TGT and session key  to the TGS asking to grant the desired access. The TGS verifies  the user's credentials by decrypting the TGT, and assembles a service ticket for the desired service and encrypts it with the service host's secret key.
+5. It transmits the service ticket to the user along with the session key. 
+6. The user stores the service ticket with its secrey key and validates the user's identity and the authorization to access the service. 
+
