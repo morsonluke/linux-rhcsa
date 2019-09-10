@@ -2,6 +2,8 @@
 
 Notes from learning for RHCSA &amp; RHCA exams. Based largely on "RHCSA & RHCE RHEL 7" by Asghar Ghori. 
 
+These are my personal notes taken while learning so most o the content is copied from the book. 
+
 * 1: [Using basic Linux Tools](basic_linux_tools.md)
 * 2: [Working with Files and File Permissions](files_and_file_permissions.md)
 * 3: [Bash Shell, Processing and Scheduling](bash_processing_scheduling.md)
@@ -19,3 +21,5 @@ Notes from learning for RHCSA &amp; RHCA exams. Based largely on "RHCSA & RHCE R
 * 15: [Tuning Kernel Parameters, Reporting System Usage, and Logging Remotely](kernel_parameters.md)
 * 16: [File Storage with Samba](file_storage_with_samba.md)
 * 17: [Hosting Websites with Apache](hosting_with_apache.md)
+* 18: [Sending and Receiving Electronic Mail](electronic_mail.md)
+* 19: [Configuring DNS](configuring_dns.md)
