@@ -2,7 +2,7 @@
 
 Notes from learning for RHCSA &amp; RHCA exams. Based largely on "RHCSA & RHCE RHEL 7" by Asghar Ghori. 
 
-These are my personal notes taken while learning so most o the content is copied from the book. 
+These are my personal notes taken while learning so most of the content is copied from the book.
 
 * 1: [Using basic Linux Tools](basic_linux_tools.md)
 * 2: [Working with Files and File Permissions](files_and_file_permissions.md)
@@ -23,3 +23,4 @@ These are my personal notes taken while learning so most o the content is copied
 * 17: [Hosting Websites with Apache](hosting_with_apache.md)
 * 18: [Sending and Receiving Electronic Mail](electronic_mail.md)
 * 19: [Configuring DNS](configuring_dns.md)
+* 20: [Managing MariaDB](mariadb.md)
