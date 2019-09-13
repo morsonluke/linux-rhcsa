@@ -85,9 +85,36 @@ The five process states are running, sleeping, waiting, stopped and zombie.
 
 ##### Scheduling
 
+Job scheduling is a feature that allows a user to submit a command or program for execution at a certain time. 
+
+Job scheduling and execution is taken care of by two daemons: atd and crond. While atd manges the jobs scheduled to run on etime in the future, crond is responsible for running job repetitively. At startup it reads schedules in files in `/var/spool/cron` and `/etc/cron.d` directories and slams them into memory for later execution. 
+
+User access is controlled in the /etc directory in allow/deny files.
+
 ```
-# we can see all atd and cron jobs 
+# we can see all atd and cron activities 
 cat /var/log/cron
 # run a script in a few hours
 at -f ~/.executablescript.sh now + 2 hours
+```
+
+#### Crontab
+
+The `/etc/crontab` file specifies the syntax that each cron job must comply with in order for crond to interpret and execute. 
+
+```
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name  command to be executed
+```
+
+
+```
+# view the crontab for a user
+crontab -l
 ```
