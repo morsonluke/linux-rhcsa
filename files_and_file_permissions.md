@@ -82,6 +82,8 @@ mv -i file1 file2
 rm -i file
 # remove directory
 rm -r file
+# remove an empty directory
+rmdir test3
 ```
 
 #### Control Attributes
@@ -120,6 +122,10 @@ find . -name -filetofind -print
 find /proc -size +100M
 # search for all the files in the system with sticky bit
 find / -type d -perm -1000
+# find all files called tmp in the entire directory and ask for removal confirmation 
+find / -name core -ok rm {} \;
+# find files modified in the last 10 days and show file type
+find / -type f -mtime -10 -exec file {} \;
 ```
 
 #### Linking Files/Directories
@@ -134,7 +140,7 @@ Hard links associate files with a single inode number making all files undisting
 # create a soft link for the newfile in the home directory
 cd ~
 ln -s newfile newfilelinked
-# soft links can be seen in the / directory
+# soft links can be seen in the / directory they begin with the letter l and have an arrow pointing tothe source file
 ll /
 --> lrwxrwxrwx.  1 root root    7 Aug  8 12:38 bin -> usr/bin
 # create a hard link
