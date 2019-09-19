@@ -9,10 +9,6 @@ ssh -l user1 {ip address}
 ssh user1@{ip address}
 ```
 
-### Common Linux Commands
-
-This list a number of basic commands
-
 #### Documentation
 
 Before looking at the commands these are a few ways of finding out more information about those commands to know which options can be used.
@@ -26,6 +22,8 @@ man -k password
 mandb
 # see a short description of the specific command
 whatis ls
+# search man pages and key words
+apropos log
 ```
 
 The `/usr/share/doc` directory stores documentation for all installed packages under sub-directories. This has a lot of information about the packages.
@@ -86,8 +84,12 @@ lastlog
 uname
 # view the hostname 
 hostnamectl
+# change hostname
+hostnamectl set-hostname host1.example.com 
 # display and set system date and time
 timedatectl
+# set the date
+date --set "2019-11-01 12:00:00"
 # see the path the command will execute if run with absolute path
 which cat
 # count number lines, words and characters
@@ -102,6 +104,8 @@ lscpu
 
 #### Compression Tools
 
+Archiving tools include tar and start which have the ability to preserve general file attributes (ownership, group membership)
+
 ```
 # gzip creates a compressed file of each of the files
 gzip /root/anaconda-ks.cfg
@@ -114,6 +118,13 @@ tar cvf /tmp/home.tar /home
 tar xvf /tmp/home.tar
 ```
 
+The star command is an enhanced version of tar. 
+
+```
+# create a tarball containing entire /etc directory with all extended file attributes and SELinux file context
+star cvf /tmp/etc.tar -xattr -H=exustar /etc
+```
+
 #### vi
 
 The vi editor is a text editing tool that allows you to create and modify text files. There's a multitude of options with vi to explore.
@@ -123,6 +134,8 @@ The vi editor is a text editing tool that allows you to create and modify text f
 vi new_file
 # exit and save using 
 esc + :wq
+# write changes into a new file called file2
+:w file2
 # exit if modifications were made, but we do not wish to save them
 :q!
 ```

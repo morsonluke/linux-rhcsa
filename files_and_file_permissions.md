@@ -1,5 +1,11 @@
 ## Files and File Permissions
 
+* RHEL follows the File system Hierarchy Standard (FHS)
+* The `/boot` file system contains the Linux kernel, boot support files and boot configuration files
+* `/usr/lib` contains shared library routines requires by commands/programs in /usr/bin and /user/sbin and kernel and other programs
+* `usr/sbin` contains system admin commands not intended for execution by regular users.
+* The `/dev` file system contains device nodes for physical hardware and virtual devices. These device nodes are created and deleted by the udevd service as necessary. There are two types of device files: character (or raw) and block. Character ddevices are access serially while block devices parallely .
+
 #### /proc
 
 `/proc` maintains the information about the current state of the Kernel. The contents are created in memory at boot time and a number of system utilities such as `top, ps etc.` are actually referencing these files. 
@@ -13,6 +19,8 @@ cat /proc/meminfo
 #### Paths
 
 ```
+# see absolute path in relation to /
+pwd
 # see the type of file
 file .bash_profile
 # sybmolic link are shortcuts to another file or directory
@@ -81,16 +89,32 @@ rm -r file
 
 #### Control Attributes
 
+There are two commands lsattr and chattr that are used for attribute management.
+
+| Attribute | Description |
+| ---    |  ---         |
+| a | can only be appended |
+| A | prevents updating the access time |
+| c | automatically compressed | 
+| D | changes on directory are written synchronously to disk | 
+| e | file uses extents for mapping the block on disk |
+| i | file cannot be changed, renamed or deleted |
+| S | changes in a file are written synchronously to disk | 
+
 ```
 # see the current attributes for a file
 lsattr file1
 # update attribues of a file
 chattr +a file1
+# remove attributes
+chattr -ia file1
 ```
 
 #### Finding Files
 
-The find command is very powerful as it can recursively search the directory tree and perform actions on any files find if required. 
+The find command is very powerful as it can recursively search the directory tree and perform actions on any files find if required.
+
+It takes the form `find path search option action`
 
 ```
 # find a file in the home directory
@@ -103,7 +127,7 @@ find / -type d -perm -1000
 
 #### Linking Files/Directories
 
-Each file has associated metada which is callede the file's *inode*. The inode is assigned a unique number that is used by the kernel for managing the file. 
+Each file has associated metadata which is called the file's *inode*. The inode is assigned a unique number that is used by the kernel for managing the file. 
 
 A soft link or symlink allows one file to be associated with another.
 
@@ -139,7 +163,7 @@ Permission classes are user, group and public. Permission types are read, write 
 | Group (g) | A set of users that have identical access on files and directories that they share |
 | Others (o) | All others users - public | 
 
-`chmod` can modify permissions in either symbolic or octal.
+`chmod` can modify permissions in either symbolic or octal. In the three 3-digit octl numbering we have X-X-X with the corresponding weights  4-2-1.
 
 ```
 # add execute permission for the owner
@@ -152,7 +176,7 @@ chmod o-w newilfe
 chmod 777 newfile
 ```
 
-Linux assigns default permissions to a file/directory at the time of its creation. These are calculated from the umask permission value substracted from a preset value called initial permissions. 
+Linux assigns default permissions to a file/directory at the time of its creation. These are calculated from the umask permission value substracted from a preset value called initial permissions. In RHEL the default umask is 0022 for the root and 0002 for all regular users. 
 
 ```
 # see the umask value

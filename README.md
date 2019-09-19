@@ -4,7 +4,7 @@ Notes from learning for RHCSA &amp; RHCA exams. Based largely on "RHCSA & RHCE R
 
 These are my personal notes taken while learning so most of the content is copied from the book.
 
-* 1: [Installed RHEL7](installing_rhel7.md)
+* 1: [Installing RHEL7](installing_rhel7.md)
 * 2: [Using basic Linux Tools](basic_linux_tools.md)
 * 3: [Working with Files and File Permissions](files_and_file_permissions.md)
 * 4: [Bash Shell, Processing and Scheduling](bash_processing_scheduling.md)
