@@ -4,11 +4,8 @@
 * The `/boot` file system contains the Linux kernel, boot support files and boot configuration files
 * `/usr/lib` contains shared library routines requires by commands/programs in /usr/bin and /user/sbin and kernel and other programs
 * `usr/sbin` contains system admin commands not intended for execution by regular users.
-* The `/dev` file system contains device nodes for physical hardware and virtual devices. These device nodes are created and deleted by the udevd service as necessary. There are two types of device files: character (or raw) and block. Character ddevices are access serially while block devices parallely .
-
-#### /proc
-
-`/proc` maintains the information about the current state of the Kernel. The contents are created in memory at boot time and a number of system utilities such as `top, ps etc.` are actually referencing these files. 
+* The `/dev` file system contains device nodes for physical hardware and virtual devices. These device nodes are created and deleted by the udevd service as necessary. There are two types of device files: character (or raw) and block. Character ddevices are access serially while block devices parallely
+* `/proc` maintains the information about the current state of the Kernel. The contents are created in memory at boot time and a number of system utilities such as `top, ps etc.` are actually referencing these files 
 
 ```
 # see the output of the files from /proc
