@@ -1,12 +1,25 @@
 # Bash Shell, Processes and Scheduling
 
+Shell interface users with the kernel by enabling requests for processes to be submitted. 
+
+A local variable is private to the shell in which it is created and its value cannot be used by processes that are not started in that shell. The value of an environmental variable is passed from the current shell to the sub-shell during the execution of a script. 
+
 ```
+# a variable is a temporary storage of data in memory
 # define a local variable
 VAR1=centos7
 # show the value
 echo $VAR1
+# make an environmental variable 
+export VR1
 # unset the value
 unset VAR1
+```
+
+The primary command prompt for the root user is # and a regular user gets a $. We can customise the primary command prompt. 
+
+```
+export PS1="<$LOGNAME@`hostname`:\$PWD>"
 ```
 
 The default locations for input, output and error are stdin, sdout and stderr. The locations can be < operator for stdin and > for stdout and stderr or using file descriptors of 0, 1 and 2 for stdin, stdout and stderr.
