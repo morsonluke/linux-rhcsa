@@ -25,19 +25,29 @@ export PS1="<$LOGNAME@`hostname`:\$PWD>"
 The default locations for input, output and error are stdin, sdout and stderr. The locations can be < operator for stdin and > for stdout and stderr or using file descriptors of 0, 1 and 2 for stdin, stdout and stderr.
 
 ```
+# have the cat command output to standard out
+cat < /etc/cron.allow
 # redirect output of ll to ll.out
 ll > ll.out
 # to append to the output 
 ll >> ll.out
+# send  error message to /dev/null
+find / -name core -print 2> /dev/null
+# send both to a file
+ls /usr /cdr &> outerr.out
 ```
 
 ```
+# location of history file
+echo $HISTFILE
 # see the history 
 history 20
 # execute the command by its line number
 !38
 # repeat the last command
 !!
+# current directory
+echo ~+
 ```
 
 #### grep
@@ -93,6 +103,17 @@ ps -U root
 ```
 
 A process is spawned at a certain priority established by a numerical value called niceness. These go from -20 to + 19. 
+
+```
+# see niceness values
+ps -efl 
+# see default nice value
+nice
+# set niceness value for top
+nice -2 top
+# modify a currently running process
+renice 5 1919
+```
 
 The five process states are running, sleeping, waiting, stopped and zombie.
 
