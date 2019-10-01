@@ -5,14 +5,17 @@ RHEL is essentially a set of RPM packages slung together to form an OS. It's all
 A software packages is a group of files organised in a directory structure along with some metadata. There's often package dependency where one package relies on another which can at times cause a toxic relationship. 
 
 ```
+# metadata for installed package files is stored in /var/lib/rpm directory
 # see all packages installed
 rpm -qa
+# see if mlocate is installed 
+rpm -q mlocate
 # list all files in a package
-rpm -ql iproutei
+rpm -ql iproute
 # identify which package the file is associate with 
 rpm -qf /etc/passwd
 # show information about a package
-rpm -qi setup
+rpm -qi mlocate
 # list all dependencies for a specified package
 rpm -qR iptablesp
 ```
@@ -31,8 +34,10 @@ The `yum` command is the front-end to the rpm  command. A yum repository is a di
 cat /etc/yum.conf
 # see additional config
 yum-config-manager
-# see all enable  repos accesible to the system
+# see all enable repos accesible to the system
 yum repolist
 # list all packages that begin with with a string
 yum list installed string*
+# search for a package
+yum search mlocate
 ```
