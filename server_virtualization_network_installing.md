@@ -29,3 +29,31 @@ The default mode of operation for vibr0 is NAT with IP masquerading. NAT allows 
 #### Virtualization Management Tools
 
 * The default hypervisor and virtual machine management software is libvirt. The Virtual Machine Manager is the graphical equivalent of virt-install and virsh. 
+
+```
+# open virt-manager graphical tool
+virt-manager
+```
+
+#### Define a NAT Virtual Network Using virsh
+```
+yum install libvirt
+# create rhnet_virsh.xml definition in /root
+virsh net-define /root/rhnet_virsh.xml
+# set automatic start up
+virsh net-autostart rhnet_virsh
+# start new virtual network
+virsh net-start rhnet_virsh
+# list all virtual networks
+virsh net-list
+# see details of virtual network
+virsh net-info rhnet_virsh
+```
+
+#### Configure FTP Installation Server
+
+FTP is a standard networking protocol for transferring file between systems. In RHEL there is a version called very secure FTP or vsFTP which allows us to enable, disable and set security contorls on incoming service requests. The vsFTP daemon `vsftpd` communicates on port 21. 
+
+```
+yum - y install vsftpd
+```
