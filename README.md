@@ -25,3 +25,7 @@ These are my personal notes taken while learning so most of the content is copie
 * 19: [Sending and Receiving Electronic Mail](electronic_mail.md)
 * 20: [Configuring DNS](configuring_dns.md)
 * 21: [Managing MariaDB](mariadb.md)
+
+#### Red Hat Certified System Administrator (RHCSA) exam
+
+* [Objectives](https://www.redhat.com/en/services/training/ex200-red-hat-certified-system-administrator-rhcsa-exam)

@@ -67,6 +67,10 @@ less /etc/profile
 head -100 /etc/profile
 # view a log file while it's being updated
 tail -f /var/log/messages
+# send the data from a log file in progress
+cat /dev/null > nifi-bootstrap_2019-10-02.log
+# list which processes are using which files
+lsof +L1
 ```
 
 #### Copying and moving files

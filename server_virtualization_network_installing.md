@@ -57,3 +57,11 @@ FTP is a standard networking protocol for transferring file between systems. In 
 ```
 yum - y install vsftpd
 ```
+
+#### The wget Utility 
+
+`wget` is a non-interactive file download utility that allows you to retrieve a single file or entire directory from FTP, HTTP(S).
+
+```
+wget -d www.redhat.com
+```
