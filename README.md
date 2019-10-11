@@ -20,11 +20,12 @@ These are my personal notes taken while learning so most of the content is copie
 * 14: [Writing Shell Scripts](writing_shell_scripts.md)
 * 15: [Firewalld and Kerberos](firewalld_and_kerberos.md)
 * 16: [Tuning Kernel Parameters, Reporting System Usage, and Logging Remotely](kernel_parameters.md)
-* 17: [File Storage with Samba](file_storage_with_samba.md)
-* 18: [Hosting Websites with Apache](hosting_with_apache.md)
-* 19: [Sending and Receiving Electronic Mail](electronic_mail.md)
-* 20: [Configuring DNS](configuring_dns.md)
-* 21: [Managing MariaDB](mariadb.md)
+* 17: [File Storage with NFS](file_storage_with_nfs.md)
+* 18: [File Storage with Samba](file_storage_with_samba.md)
+* 19: [Hosting Websites with Apache](hosting_with_apache.md)
+* 20: [Sending and Receiving Electronic Mail](electronic_mail.md)
+* 21: [Configuring DNS](configuring_dns.md)
+* 22: [Managing MariaDB](mariadb.md)
 
 #### Red Hat Certified System Administrator (RHCSA) exam
 
