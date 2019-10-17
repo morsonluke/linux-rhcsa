@@ -30,3 +30,6 @@ These are my personal notes taken while learning so most of the content is copie
 #### Red Hat Certified System Administrator (RHCSA) exam
 
 * [Objectives](https://www.redhat.com/en/services/training/ex200-red-hat-certified-system-administrator-rhcsa-exam)
+
+####  Operating Systems
+* 1: [Processes and Threads](processes_and_threads.md)

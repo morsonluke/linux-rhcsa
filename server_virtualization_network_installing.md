@@ -65,3 +65,14 @@ yum - y install vsftpd
 ```
 wget -d www.redhat.com
 ```
+
+#### Maintaining and Managing Log Files
+
+A script called `logrotate` in `/etc/logrotate.d` manages the rotation of logfiles by source `/etc/logrotate.conf`
+
+#### The Journal 
+
+```
+# see verbose output
+journalctl -o verbose
+```

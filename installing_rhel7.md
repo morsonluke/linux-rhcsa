@@ -33,3 +33,6 @@ A few key points not a full guide. This allows for a GUI installation which is n
 7. Add a root password and a users
 8. Confirm the post installation tasks
 
+#### Creating automated labs
+
+* [Creating the labs Using Vagrant](https://github.com/AnwarYagoub/RHCSA-RHCE-Lab-Environment)

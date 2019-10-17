@@ -38,10 +38,23 @@ passwd -n 7 -x 28 -w 5 testuser
 ```
 # add a group
 groupadd -g 5000 linuxadmins
+# add another group sharing the GID of the same group
+groupadd -o -g 5000 sales
 # addl user1 to linuxadmins
 usermod -a -G linuxadmins user1
 # see groups
 groups user1
+```
+
+#### Doing a bit of sudoing
+
+The sudo utility is designed to provide protected access to administrative functions as defined in `/etc/sudoers` file. The file can be edited in a safe fashion using `visudo`. 
+
+The file contains example of how access is defined such as for members of the wheel group. 
+
+```
+## Allows people in group wheel to run all commands
+%wheel	ALL=(ALL)	ALL
 ```
 
 #### Shell Startup Files
