@@ -1,5 +1,7 @@
 # Constructing and Using File Systems and Swap
 
+A file systme is a logical container that is used to store files and directories that is created in a separate partition or logical volume. 
+
 There are several different types of file systems that can be categorized in theree basic groups: disk-based, network-based and memory-based. 
 
 * Disk-based are typically create on hard drives using SCIS, iSCSI, SATA, SAS, USB, Fibre Channel...
@@ -36,4 +38,16 @@ blkid
 findmnt
 # determine UUID of file system 
 xfs_admin -u /dev/vda1
+grep boot /etc/fstab
+# determine the label set 
+xfs_admin -l /dev/vda1
+```
+
+Label a file system
+
+```bash
+    # xfs_admin -l /dev/sda1
+    # umount /boot
+    # xfs_admin -L bootfs /dev/sda1
+    # mount /boot
 ```

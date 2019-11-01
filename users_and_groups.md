@@ -33,6 +33,14 @@ cd /etc ; grep user4 passwd
 passwd -n 7 -x 28 -w 5 testuser
 ```
 
+```
+# create a user with sudo access
+sudo adduser tableau-admin
+sudo passwd tableau-admin
+# add user to wheel group
+sudo usermod -aG wheel tableau-admin
+```
+
 #### Groups
 
 ```

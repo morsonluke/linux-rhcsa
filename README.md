@@ -1,6 +1,6 @@
 # linux-rhcsa
 
-Notes from learning for RHCSA &amp; RHCA exams. Based largely on "RHCSA & RHCE RHEL 7" by Asghar Ghori. 
+Notes from learning for RHCSA &amp; RHCA exams. Based largely on "RHCSA & RHCE RHEL 7" by Asghar Ghori. Notes also from "Operating Systems 4th Edition". 
 
 These are my personal notes taken while learning so most of the content is copied from the book.
 
