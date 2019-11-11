@@ -41,7 +41,7 @@ Add and activate iptables Rules
     # allow incoming FTP connection on port 21
     $ iptables -I INPUT -m state --state NEW -p tcp --dport 21 -j ACCEPT
     # save rules in /etc/sysconfig/iptables
-    service iptables save
+    $ service iptables save
 ```
 
 #### firewall-cmd
@@ -51,4 +51,34 @@ In order to use firewalld operations we need to deactivate iptables service
 ```bash
     # systemctl stop iptables
     # systemctl enable firewalld
+    # systemctl start firewalld
+
+    # firewall-cmd --get-default-zone
+    
+    Allow HTTP traffic on default port
+    # firewall-cmd --permanent --add-service=http
+    Allow traffic on 8443 for TCP
+    # firewall-cmd --add-port=8443/tcp
+    Active the rule
+    # fireall-cmd --reload
+    Confirm changes
+    # firewall-cmd --list-services
+    # firewall-cmd --list-ports
+```
+#### SELinux
+
+* Stands for Security Enhanced Linux and is an implementation of the Mandatory Access Control (MAC) architecture
+* SELinux decisions are stored in a cache area referred to as Access Vector Cache (AVC)
+
+```bash
+    See the root user has no restrictions
+    #id -Z
+    --> unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+    See the other SeLinux users
+    # yum install setools-console
+    # seinfo -u
+    Determine the context of a process
+    # ps -eZ
+    See context information for a file
+    ll -Z /etc/passwd
 ```
