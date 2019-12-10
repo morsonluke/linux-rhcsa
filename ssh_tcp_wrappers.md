@@ -1,6 +1,6 @@
 # Securing Access with SSH and TCP Wrappers
 
-**Secure Shell** is a network protocol that delivers a secure mechanism for data transmission. The secure shell has a set of utilities for logging in, tranferring files and executing commands securley. 
+**Secure Shell** is a network protocol that delivers a secure mechanism for data transmission. The secure shell has a set of utilities for logging in, tranferring files and executing commands securely. 
 
 **TCP wrappers** is a host-based service that is used to control access to network services running on the system. 
 
@@ -14,7 +14,7 @@ OpenSSH is a free, open source implementation of proprietry SSH. OpenSSH v2 supp
 |  Encryption | Description | 
 | --- | --- | 
 | Symmetric Encryption   | Uses a single secret key (or a pair) to protect authentication traffic | 
-|  Asymmetric Encryption | Uses private/public key combination for encryption. The client transmute the information using a public key and the server decryts using the private key | 
+|  Asymmetric Encryption | Uses private/public key combination for encryption. The client transmute the information using a public key and the server decrypts using the private key | 
 
 Once an encrypted channel is established, other negotiations take place. 
 
@@ -23,7 +23,7 @@ Once an encrypted channel is established, other negotiations take place.
 |  GSSAPI-Based | GSS API allows security mechanisms such as Kerberos to be used. With this method an exchange of tokens take place between client and server to validate user identity  | 
 | Host-Based | Setup is done in `/etc/ssh/shots.equiv` file | 
 | Private/Public Key-Based | This method uses a private/public key combination for user auth |
-| Challenge-Response| Based on the responses to one of more arbitrary challange questions |
+| Challenge-Response| Based on the responses to one or more arbitrary challange questions |
 | Password-Based | Prompts the user to enter their password. Checks the password against the stored entry in the shadow (or passwd) file | 
 
 ``` bash
@@ -36,11 +36,11 @@ Once an encrypted channel is established, other negotiations take place.
 
 | Command | Description | 
 | --- | --- |
-| scp |  secure alternative to `rcp` |
+| scp |  secure alternative to `rcp`|
 | sftp |   ... `ftp` |
 | slogin |   ... `rlogin`  |
-| ssh |  ... `telnet` and ``rlogin`   |
-| ssh-add | Adds characteristics to ssh-agent  |
+| ssh |  ... `telnet` and `rlogin` |
+| ssh-add | Adds characteristics to ssh-agent |
 | ssh-agent |  Auth agent. Holds private keys used |
 | ssh-copy-id | Copies keys to remote systems  |
 | ssh-keygen | Creates privarte and public keys |
