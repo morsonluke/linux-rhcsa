@@ -5,6 +5,8 @@ Shell interface users with the kernel by enabling requests for processes to be s
 A local variable is private to the shell in which it is created and its value cannot be used by processes that are not started in that shell. The value of an environmental variable is passed from the current shell to the sub-shell during the execution of a script. 
 
 ```
+# set the value of a token to be used later
+TOKEN=$(curl http://127.0.0.1:10080/login -u user | jq -r '.token')
 # a variable is a temporary storage of data in memory
 # define a local variable
 VAR1=centos7

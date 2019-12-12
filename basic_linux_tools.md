@@ -11,10 +11,10 @@ ssh user1@{ip address}
 
 #### Documentation
 
-Before looking at the commands these are a few ways of finding out more information about those commands to know which options can be used.
+We can see the usage of a command in a number of ways:
 
 ```
-# see the man pages for a command
+# see the man pages for a command 
 man mkdir
 # search the installed manual pages 
 man -k password
@@ -104,7 +104,7 @@ lscpu
 
 #### Compression Tools
 
-Archiving tools include tar and start which have the ability to preserve general file attributes (ownership, group membership)
+Compression tools are used to save space
 
 ```
 # gzip creates a compressed file of each of the files
@@ -112,10 +112,25 @@ gzip /root/anaconda-ks.cfg
 # unzip the file
 gunzip /root/anaconda-ks.cfg 
 # bzip2 & bunzip2 can also be used
+```
+
+Archiving tools include tar and star which have the ability to preserve general file attributes (ownership, group membership)
+
+```
 # Create a tarball of the entire /home directory
 tar cvf /tmp/home.tar /home
 # to restore /home from home.tar
 tar xvf /tmp/home.tar
+# copy mutiple files
+tar cvf /tmp/files.tar file1 file2
+# see contents of tar
+tar tvf files.tar
+# restore the files
+tar xvf files.tar
+# make a tar and compress with bzip2
+tar cvzf files.tar.gz /vagrant/
+# also preserve selinux and attributes and compress with bzip2
+tar cvj --selinux --xattrs -f /tmp/file.tar.bz2 /home
 ```
 
 The star command is an enhanced version of tar. 
