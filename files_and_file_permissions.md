@@ -2,6 +2,7 @@
 
 * RHEL follows the File system Hierarchy Standard (FHS)
 * The `/boot` file system contains the Linux kernel, boot support files and boot configuration files
+* The `/var` contains data that frequently changes while the system is operational
 * `/usr/lib` contains shared library routines requires by commands/programs in /usr/bin and /user/sbin and kernel and other programs
 * `usr/sbin` contains system admin commands not intended for execution by regular users.
 * The `/dev` file system contains device nodes for physical hardware and virtual devices. These device nodes are created and deleted by the udevd service as necessary. There are two types of device files: character (or raw) and block. Character ddevices are access serially while block devices parallely
@@ -109,6 +110,10 @@ There are two commands lsattr and chattr that are used for attribute management.
 lsattr file1
 # update attribues of a file
 chattr +a file1
+# try to copy content of another file to it
+cat /etc/fstab > file1
+# append operation will work while above will not
+cat /etc/fstab >> file1
 # remove attributes
 chattr -ia file1
 ```
@@ -170,7 +175,7 @@ Permission classes are user, group and public. Permission types are read, write 
 | Group (g) | A set of users that have identical access on files and directories that they share |
 | Others (o) | All others users - public | 
 
-`chmod` can modify permissions in either symbolic or octal. In the three 3-digit octl numbering we have X-X-X with the corresponding weights  4-2-1.
+`chmod` can modify permissions using either **symbolic** or **octal** notation. In the three 3-digit octl numbering we have X-X-X with the corresponding weights  4-2-1.
 
 ```
 # add execute permission for the owner
@@ -194,25 +199,62 @@ chown newuser newfile
 chgrp newgroup newfile -v
 # assign ownership and owning group at the same time
 chown newuser:newgroup newfile
+# change ownership recursively 
+chown -R user100:user100 dir
 ```
 
 #### Special Permissions
 
-setuid is set on executable files at the owner level. With this bit set, the file is executed by other regular users with the same priviledges at that of the owner. setgid is the same concept but at the group level.
+setuid is set on executable files at the owner level. With this bit set, the file is executed by other regular users with the same priviledges at that of the owner. 
 
 ```
 ll /usr/bin/su
 --> -rwsr-xr-x. 1 root root 32208 Mar 14 10:37 /usr/bin/su
+# remove the setuid
+chmod u-s /usr/bin/su
+# set it back 
+chmod 4755 /usr/bin/su
+```
+
+setgid is the same concept but at the group level.
+
+```
+  # see an example with setgid
+  ll /usr/bin/wall
+  # remove setgid
+  chmod g-s /usr/bin/wall
+  # put it back
+  chmod 2555 /usr/bin/wall
+```
+
+Use setgid for Group collaboration
+
+```
+  # add group sdatagrp 
+  groupadd -g 9999 sdatagrp
+  # add users
+  usermod -G sdatagrp user100
+  usermod -G sdatagrp user200
+  # create directory
+  mkdir /sdata
+  # set ownership 
+  chown root:sdatagrp /sdata -v
+  # set gid
+  chmod g+s /sdata -v
+  # verify 
+  ll -d /sdata
 ```
 
 The sticky bit is set on public writable directories. This protects file and sub-directories being deleted by other regular users. 
 
 ```
-ll -d /tmp
-# The bolded t in
-drwxrwxrwt. 8 root root 172 Aug 28 08:18 /tmp
-# set the sticky bit
-chmod 1755 /var -v
-# unset
-chmod 755 /var
+  ll -d /tmp
+  # The bolded t in
+  drwxrwxrwt. 8 root root 172 Aug 28 08:18 /tmp
+  # set the sticky bit
+  chmod 1755 /var -v
+  # unset
+  chmod 755 /var
+  # see files with this set
+  find / -type d -perm -1000
 ```
