@@ -24,7 +24,24 @@ The boot process on an x86 computer can be split into 4 main phases:
 
 #### Managing GRUB
 
-* After the firmware phase the bootloader presents a menu with a list of bootable kernels. 
+* After the firmware phase the bootloader presents a menu with a list of bootable kernels. Pressing a key allows the autoboot process to be stopped to interact with GRUB
+
+#### Resetting the Root User Password
+
+```
+  # interact with GRUB as shown above
+  # find boot string that starts with linux16 and append
+  init=/sysroot/bin/sh
+  # enters emergency mode
+  chroot /sysroot
+  # remounte root file system in read/write mode
+  mount -o remount,rw /
+  # enter a new password
+  passwd
+  # create an empty hidden file called .autorelabel at the root of the directory tree to instruct the system to perform SELinux relabelling
+  exit
+  reboot
+```
 
 #### Linux Kernel
 
