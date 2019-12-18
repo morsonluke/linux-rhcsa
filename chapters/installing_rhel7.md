@@ -22,11 +22,12 @@ One option is to set up a cheap cloud Linux machine (CentOS 7) for testing. I di
 
 #### Using Virtualbox
 
-A few key points not a full guide. This allows for a GUI installation which is needed for elements of the exam.
+A few key points and not a full guide. This allows for a GUI installation which is needed for elements of the exam.
 
 1. Download Virtualbox
 2. Download CentOS Image
-3. Attach the OS ISO image as a disk
+3. Create a New virtual machine and accept the default options
+3. Attach the OS ISO image as a disk (Settings -> Storage -> Add Optic Drive)
 4. The Installation Summary screen appears
 5. Choose Software Selection -> `Server with GUI`
 6. Configure IP and Hostname 
@@ -34,5 +35,7 @@ A few key points not a full guide. This allows for a GUI installation which is n
 8. Confirm the post installation tasks
 
 #### Creating automated labs
+
+Using VirtualBox is buggy and slow. An easier way using just the CLI:
 
 * [Creating the labs Using Vagrant](https://github.com/AnwarYagoub/RHCSA-RHCE-Lab-Environment)

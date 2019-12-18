@@ -11,7 +11,20 @@ The boot process on an x86 computer can be split into 4 main phases:
 * The firmware is the BIOS or the UEFI code that is stored in flash memory on the x86 system board. The first thing that it does is run the power-on-self-test (POST) to detect, test and initialize the system hardware componenets
 * When it discovers a boot device, it loads GRUB2 into memory and passes control over to it
 * GRUB2 is loaded into memory and takes control, it search for the kernel in `/boot` file system. 
-* The configuration can be seen in `/boot/grub2/grub.cfg`. The GRUB behaviour at boot time is defined in `/etc/default/grub`
+* The configuration can be seen in `/boot/grub2/grub.cfg`. 
+
+
+```
+  # see the defined GRUB behavior
+  /etc/default/grub
+  # reproduce the grub.cfg file
+  grub2-mkconfig -o /boot/grub2/grub.cfg
+  grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+```
+
+#### Managing GRUB
+
+* After the firmware phase the bootloader presents a menu with a list of bootable kernels. 
 
 #### Linux Kernel
 
