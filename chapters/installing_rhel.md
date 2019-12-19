@@ -36,19 +36,19 @@ RHEL can be deployed various ways:
 #### Install GNOME Desktop on Minimal Server from DVD 
 
 ```bash
-  # login as root
-  su -
-  # create a directory
-  mkdir /dvdinstall
-  # check which device has the DVD
-  lsblk
-  # mount drive
-  mount /dev/sr0 /dvdinstall
-  # check 
-  df -h
-  # go to the repo defintion and create a file
-  cd /etc/yum.repos.d
-  vi dvdinstall.repo
+# login as root
+su -
+# create a directory
+mkdir /dvdinstall
+# check which device has the DVD
+lsblk
+# mount drive
+mount /dev/sr0 /dvdinstall
+# check 
+df -h
+# go to the repo defintion and create a file
+cd /etc/yum.repos.d
+vi dvdinstall.repo
 ```
 
 Add the following:

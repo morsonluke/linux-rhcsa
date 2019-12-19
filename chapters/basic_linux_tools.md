@@ -88,6 +88,7 @@ hostnamectl
 hostnamectl set-hostname host1.example.com 
 # display and set system date and time
 timedatectl
+timedatectl set-timezone Europe/Dublin
 # set the date
 date --set "2019-11-01 12:00:00"
 # see the path the command will execute if run with absolute path
@@ -100,6 +101,8 @@ lspci -m
 lsusb
 # see info about the processor
 lscpu
+# see the calendar
+cal 2020
 ```
 
 #### Compression Tools

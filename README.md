@@ -4,7 +4,7 @@ Notes from learning for RHCSA exam focused on passing the EX200 exam. Based larg
 
 These are my personal notes taken while learning so most of the content is copied from the book.
 
-* 1: [Installing RHEL7](chapters/installing_rhel7.md)
+* 1: [Installing RHEL7](chapters/installing_rhel.md)
 * 2: [Using basic Linux Tools](chapters/basic_linux_tools.md)
 * 3: [Working with Files and File Permissions](chapters/files_and_file_permissions.md)
 * 4: [Bash Shell, Processing and Scheduling](chapters/bash_processing_scheduling.md)
@@ -31,6 +31,7 @@ These are my personal notes taken while learning so most of the content is copie
 
 * [Objectives](https://www.redhat.com/en/services/training/ex200-red-hat-certified-system-administrator-rhcsa-exam)
 * [RHEL8 Articles and videos](https://www.certdepot.net/rhel-8-articles-and-videos/)
+* [RHCSA labs and exercises](https://github.com/iahmad-khan/RHCSA)
 
 ####  Operating Systems
 * 1: [Processes and Threads](chapters/processes_and_threads.md)
