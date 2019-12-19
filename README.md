@@ -1,6 +1,6 @@
 # linux-rhcsa
 
-Notes from learning for RHCSA &amp; RHCA exams. Based largely on "RHCSA & RHCE RHEL 7" by Asghar Ghori. Notes also from "Operating Systems 4th Edition". 
+Notes from learning for RHCSA exam focused on passing the EX200 exam. Based largely on "RHCSA & RHCE RHEL 7" by Asghar Ghori. Notes also from "Operating Systems 4th Edition" and the funky titled Udemy course 'Prepare RHCSA Exams with Real Exam Practice Test'
 
 These are my personal notes taken while learning so most of the content is copied from the book.
 
