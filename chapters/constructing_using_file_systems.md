@@ -46,8 +46,20 @@ xfs_admin -l /dev/vda1
 Label a file system
 
 ```bash
-    # xfs_admin -l /dev/sda1
-    # umount /boot
-    # xfs_admin -L bootfs /dev/sda1
-    # mount /boot
+# xfs_admin -l /dev/sda1
+# umount /boot
+# xfs_admin -L bootfs /dev/sda1
+# mount /boot
+```
+
+
+#### Mounting a File System 
+
+* Mounting a partition makes its storage available starting at the specified directory
+
+```
+mkfs.xfs /dev/sdb1
+fdisk -l /dev/sdb1
+mount /dev/sdb1 /data
+# update /etc/fstab file 
 ```

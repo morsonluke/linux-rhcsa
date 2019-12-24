@@ -96,6 +96,14 @@ There are three quoting mechanisms that disbable their special meanings which ar
 ```
   # see statistics in real time 
   top
+  # sort processes by memory in top
+  shift + m
+  # renice a process in top
+  # press r and enter process id followed by niceness value
+  # kill process by precessing k followed by the process id
+```
+
+```
   # find the pid of cron
   pidof crond
   pgrep crond

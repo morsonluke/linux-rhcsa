@@ -18,12 +18,14 @@ useradd -Dte
 useradd testuser sh 
 # see what has been added to the different files 
 cd /etc; grep testuser passwd shadow group gshadow
+# modify users GECOS
+usermod -c newvalue testuser
 ```
 
 Create a user with no login access
 
 ```
-# create a user with no login access  nm us
+# create a user with no login access
 useradd -s /sbin/nologin user4 
 # assign a passwod
 echo user123 | passwd --stdin user4

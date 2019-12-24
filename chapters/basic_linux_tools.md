@@ -157,3 +157,18 @@ esc + :wq
 # exit if modifications were made, but we do not wish to save them
 :q!
 ```
+
+#### Shutdown
+
+```
+# shutdown the system in 10 minutes and notify users
+shutdown +10 {message}
+# reboot the machine 
+shutdown -r now
+systemctl reboot
+# ways to shutdown the machine
+shutdown +0
+init 0
+systemctl halt
+systemctl poweroff
+```

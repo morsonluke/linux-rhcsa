@@ -186,6 +186,8 @@ chmod go+w newfile
 chmod o-w newilfe
 # assign rwx for all u,g,o using octal notation
 chmod 777 newfile
+# allow specific access
+chmod u=rw,g=rwx,o=--- /tmp/project/
 ```
 
 Linux assigns default permissions to a file/directory at the time of its creation. These are calculated from the umask permission value substracted from a preset value called initial permissions. In RHEL the default umask is 0022 for the root and 0002 for all regular users. 

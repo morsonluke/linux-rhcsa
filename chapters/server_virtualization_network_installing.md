@@ -1,4 +1,4 @@
-# Server Virtualization and  Network Installing
+# Server Virtualization and Network Installing
 
 Server virtualization allows a physical computer to host several virtual machines, each of which acts as a standalone computer running an OS.
 
@@ -11,6 +11,16 @@ lscpu | grep -i virtualization
 --> Virtualization type:   full
 # check for flag vmx (intel processor) 
 grep vmx /proc/cpuinfo
+```
+
+```
+# install virtualization packages
+yum install qemu-kvm qemu-img libvirt libvirt-client
+# rather than memorising these packages see groups
+yum grouplist hidden
+yum groupinstall "Virtualization Client"
+yum groupinstall "Virtualization Tools"
+yum groupinstall "Virtualization Platform"
 ```
 
 #### Virtual Network Switch
