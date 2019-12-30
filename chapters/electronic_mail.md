@@ -15,7 +15,7 @@ An operational email has a heafty wedge of three letters abberviations to be und
 ```
 # see config files
 ll /etc/postfix
-# the access file can be used to establish access controls]
+# the access file can be used to establish access controls
 postmap /etc/postfix/access
 # see default config not 
 postconf -d

@@ -7,7 +7,17 @@ User account information for local users is stored in the `/etc` directory in `p
 ```
 # check for inconsistencies in passwd and shadow files
 pwck
+# check for same with group and gshadow files
+grpck
+# edit the password passwd and group files with a lock
+vipw -s
+vigr -s
 ```
+
+| Command | Description | 
+| ---     |             |
+| pwconv, grpconv  | Create and updates the shadow/gshadow file and moves user passwords over from the passwd/group file |
+| pwunconv, grpunconv | Moves user passwords back to the passwd/group file and removes the shadow/gshadow file | 
 
 #### Users
 
@@ -35,12 +45,29 @@ cd /etc ; grep user4 passwd
 passwd -n 7 -x 28 -w 5 testuser
 ```
 
+Set up password aging on user accounts
+
+```
+# add password aging
+passwd -n 7 -x 29 -w 4 student
+# see changes
+chage -l student
+# modify using chage
+chage -m 10 -M 30 -W 7 -E 2020-12-31 student
+# prompt to change at next login, disable account expiry
+chage -d 0 -m 5 -E -1 student
+# delete user
+userdel -r user4
+```
+
 ```
 # create a user with sudo access
 sudo adduser tableau-admin
 sudo passwd tableau-admin
 # add user to wheel group
 sudo usermod -aG wheel tableau-admin
+# run command as user
+su - c 'firewall-cmd --list-services'
 ```
 
 #### Groups

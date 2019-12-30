@@ -18,7 +18,7 @@ There are several different types of file systems that can be categorized in the
 | EFI System Partition | Small partition for GPT on UEFI system | 
 | NFS | Network File System |
 | AutoFS | Auto File System. NFS file system set to mount and unmount automatically on a remote system | 
-| CIFS | Common Internet File System (e.g. Samba)
+| CIFS | Common Internet File System (e.g. Samba) |
 
 
 #### XFS
@@ -39,6 +39,7 @@ findmnt
 # determine UUID of file system 
 xfs_admin -u /dev/vda1
 grep boot /etc/fstab
+blkid /dev/sr0
 # determine the label set 
 xfs_admin -l /dev/vda1
 ```
@@ -50,16 +51,4 @@ Label a file system
 # umount /boot
 # xfs_admin -L bootfs /dev/sda1
 # mount /boot
-```
-
-
-#### Mounting a File System 
-
-* Mounting a partition makes its storage available starting at the specified directory
-
-```
-mkfs.xfs /dev/sdb1
-fdisk -l /dev/sdb1
-mount /dev/sdb1 /data
-# update /etc/fstab file 
 ```

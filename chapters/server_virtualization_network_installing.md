@@ -18,6 +18,9 @@ grep vmx /proc/cpuinfo
 yum install qemu-kvm qemu-img libvirt libvirt-client
 # rather than memorising these packages see groups
 yum grouplist hidden
+# see what the group includes
+yum group info "Virtualization Client"
+# install
 yum groupinstall "Virtualization Client"
 yum groupinstall "Virtualization Tools"
 yum groupinstall "Virtualization Platform"
@@ -38,7 +41,7 @@ The default mode of operation for vibr0 is NAT with IP masquerading. NAT allows 
 
 #### Virtualization Management Tools
 
-* The default hypervisor and virtual machine management software is libvirt. The Virtual Machine Manager is the graphical equivalent of virt-install and virsh. 
+* The default hypervisor and virtual machine management software is libvirt. The virt-manager is the graphical equivalent of virt-install and virsh. 
 
 ```
 # open virt-manager graphical tool

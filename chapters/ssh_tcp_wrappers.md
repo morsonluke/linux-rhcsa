@@ -27,10 +27,12 @@ Once an encrypted channel is established, other negotiations take place.
 | Password-Based | Prompts the user to enter their password. Checks the password against the stored entry in the shadow (or passwd) file | 
 
 ``` bash
-  # view configuration files
-  cat /etc/ssh/sshd_config
-  cat /etc/ssh/ssh_config
+# view configuration files for OpenSSH
+cat /etc/ssh/sshd_config
+cat /etc/ssh/ssh_config
 ```
+
+* The directives `AllowUsers`, `DenyUsers`, `AllowGroups` & `DenyGroups` in `sshd_config` can be used for user-based security settings.
 
 #### Commands 
 
@@ -63,6 +65,14 @@ Configure private/public key-based auth:
 
 #### TCP Wrappers
 
-TCP Wrappers is a host-based mechanism that is used to limit access to wrappers-aware TCP services on the system by inbound clients.
+TCP Wrappers is a host-based mechanism that is used to limit access to wrappers-aware TCP services on the system by inbound clients. These include services like ssh, telnet, ftp and rsh. It is possible that it has been deprecated in CentOS8...
 
 When a TCP client request comes in, the wrappers daemon `tcpd` scans the `hosts.allow` file and then the `hosts.deny` file.
+
+```
+# see files 
+ll /etc/host*
+man tcpd
+```
+
+All messagaes related to TCP Wrappers are logged to `/var/log/secure`
