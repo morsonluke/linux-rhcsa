@@ -38,6 +38,6 @@ These are my personal notes taken while learning so most of the content is copie
 * [RHEL8 Articles and videos](https://www.certdepot.net/rhel-8-articles-and-videos/)
 * [RHCSA labs and exercises](https://github.com/iahmad-khan/RHCSA)
 
-####  Other
+#### Other
 * 1: [Processes and Threads](chapters/processes_and_threads.md)
-* 2: [Cheatsheet][/chapters/cheats.md]
+* 2: [Cheatsheet](/chapters/cheats.md)
