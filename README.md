@@ -4,6 +4,8 @@ Notes from learning for RHCSA exam focused on passing the EX200 exam. Based larg
 
 These are my personal notes taken while learning so most of the content is copied from the book.
 
+#### RHCSA
+
 * 1: [Installing RHEL7](chapters/installing_rhel.md)
 * 2: [Using basic Linux Tools](chapters/basic_linux_tools.md)
 * 3: [Working with Files and File Permissions](chapters/files_and_file_permissions.md)
@@ -17,6 +19,9 @@ These are my personal notes taken while learning so most of the content is copie
 * 11: [Controlling Access through Firewall and SELinux](chapters/firewall_and_SELinux.md)
 * 12: [Administering Network Interfaces and Network Clients](chapters/network_interfaces_and_clients.md)
 * 13: [Securing Access with SSH and TCP Wrappers](chapters/ssh_tcp_wrappers.md)
+
+#### RHCE 
+
 * 14: [Writing Shell Scripts](chapters/writing_shell_scripts.md)
 * 15: [Firewalld and Kerberos](chapters/firewalld_and_kerberos.md)
 * 16: [Tuning Kernel Parameters, Reporting System Usage, and Logging Remotely](chapters/kernel_parameters.md)
@@ -27,11 +32,12 @@ These are my personal notes taken while learning so most of the content is copie
 * 21: [Configuring DNS](chapters/configuring_dns.md)
 * 22: [Managing MariaDB](chapters/mariadb.md)
 
-#### Red Hat Certified System Administrator (RHCSA) exam
+#### RHCSA exam
 
 * [Objectives](https://www.redhat.com/en/services/training/ex200-red-hat-certified-system-administrator-rhcsa-exam)
 * [RHEL8 Articles and videos](https://www.certdepot.net/rhel-8-articles-and-videos/)
 * [RHCSA labs and exercises](https://github.com/iahmad-khan/RHCSA)
 
-####  Operating Systems
+####  Other
 * 1: [Processes and Threads](chapters/processes_and_threads.md)
+* 2. [Cheatsheet][/chapters/cheats.md]

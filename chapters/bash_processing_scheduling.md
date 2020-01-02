@@ -1,8 +1,8 @@
 # Bash Shell, Processes and Scheduling
 
-Shell interface users with the kernel by enabling requests for processes to be submitted. 
-
-A local variable is private to the shell in which it is created and its value cannot be used by processes that are not started in that shell. The value of an environmental variable is passed from the current shell to the sub-shell during the execution of a script. 
+* The Shell interfaces users with the kernel by enabling requests for processes to be submitted
+* A local variable is private to the shell in which it is created and its value cannot be used by processes that are not started in that shell
+* The value of an environmental variable is passed from the current shell to the sub-shell during the execution of a script. 
 
 ```
   # set the value of a token to be used later
@@ -32,10 +32,16 @@ The default locations for input, output and error are stdin, sdout and stderr. T
   ll > ll.out
   # to append to the output 
   ll >> ll.out
-  # send  error message to /dev/null
+  # send error message to /dev/null
   find / -name core -print 2> /dev/null
   # send both to a file
   ls /usr /cdr &> outerr.out
+  # redirect stdout to a file and then redirect stderr to stdout
+  ll /usr /cdr > ~/dir.out 2>&1
+  # send outpout to input of another command
+  head /proc/cpuinfo | tr a-z A-Z
+  # channel a file to a program's standard input
+  head < /proc/cpuinfo
 ```
 
 ```
@@ -75,7 +81,7 @@ Linux has grep (global regular expression print) for when you fancy a bit of pat
   ls /etc/t*
   # list all directories under /var/log with three characters in their name
   ls -d /var/log/???
-  # list all directory names that begin with any letter between a and d
+  # list all directory names that begin with any letter between m and p
   ls -d /etc/systemd/system/[m-p]*
   # the | character sends the output of one command as input to the next 
   ll /etc | more
@@ -111,7 +117,7 @@ There are three quoting mechanisms that disbable their special meanings which ar
   ps -U root
 ```
 
-A process is spawned at a certain priority established by a numerical value called niceness. These go from -20 to + 19. 
+A process is spawned at a certain priority established by a numerical value called niceness. These go from -20 to +19. 
 
 ```
   # see niceness values
@@ -122,6 +128,19 @@ A process is spawned at a certain priority established by a numerical value call
   nice -2 top
   # modify a currently running process
   renice 5 1919
+```
+
+```bash
+  # install httpd
+  yum install httpd
+  # ensure it is stopped
+  systemctl stop httpd
+  # start with a nice value of 20
+  nice -n -20 httpd
+  # see nice level 
+  ps axo pid,comm,nice --sort=nice | grep httpd
+  # renice
+  renice -n 0 $(pgrep httpd)
 ```
 
 The five process states are running, sleeping, waiting, stopped and zombie.
@@ -135,10 +154,38 @@ Job scheduling and execution is taken care of by two daemons: atd and crond. Whi
 User access is controlled in the /etc directory in allow/deny files.
 
 ```
+# add crontab enteries to a file
+crontab file
 # we can see all atd and cron activities 
 cat /var/log/cron
 # run a script in a few hours
 at -f ~/.executablescript.sh now + 2 hours
+```
+
+Submit an at job:
+
+```
+  at 11:30pm 1/6/20
+  at> find / -name core -exec rm {} \; & /tmp/core.out
+  # view list of jobs
+  ll /var/spool/at
+  # or view by name of job ID
+  at -c 1
+  # list jobs
+  at -l 
+  # remove job
+  atrm 1
+```
+
+Add a command to issue a statement to the system log
+
+```bash
+  at now +2 minutes
+  >at logger "The system uptime is $(uptime)"
+  # view the logs
+  tail -f /var/log/messages
+  # or 
+  journalctl -f 
 ```
 
 #### Crontab
@@ -154,9 +201,19 @@ The `/etc/crontab` file specifies the syntax that each cron job must comply with
 # |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
 # |  |  |  |  |
 # *  *  *  *  * user-name  command to be executed
+
+# Will only run on odd days:
+0 0 1-31/2 * * command
+
+# Will only run on even days:
+0 0 2-30/2 * * command
 ```
 
-```
+``` 
+  # edit crontab file and add something
+  crontab -e
   # view the crontab for a user
   crontab -l
+  # remove
+  crontab -r
 ```
