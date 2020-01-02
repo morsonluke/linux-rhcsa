@@ -40,4 +40,4 @@ These are my personal notes taken while learning so most of the content is copie
 
 ####  Other
 * 1: [Processes and Threads](chapters/processes_and_threads.md)
-* 2. [Cheatsheet][/chapters/cheats.md]
+* 2: [Cheatsheet][/chapters/cheats.md]
