@@ -4,7 +4,7 @@ RHEL is essentially a set of RPM packages slung together to form an OS. It's all
 
 A software packages is a group of files organised in a directory structure along with some metadata. There's often package dependency where one package relies on another which can at times cause a toxic relationship. 
 
-| `openssl-1.0.1e-34.el7.x86_64.rpm` | Componennt | 
+| `openssl-1.0.1e-34.el7.x86_64.rpm` | Component Part | 
 | --- | --- |
 | openssl | package name |
 | 1.0.1e | package version |
@@ -51,7 +51,6 @@ rpm -ev zsh
 
 #### Vetifying Package Integrity
 
-
 A package can be checked for integrity using the MD5 checksum and GPG public key. 
 
 ```bash
@@ -94,6 +93,8 @@ createrepo -v /var/local
 # define the local repo
 vi /etc/yum.repos.d/local.repo
 ```
+
+Add the following to the file:
 
 ```yaml
 [local]

@@ -4,7 +4,7 @@
 
 We can ssh from another Linux system with the hostname or IP address with either of:
 
-```
+```bash
 ssh -l user1 {ip address}
 ssh user1@{ip address}
 ```
@@ -13,7 +13,7 @@ ssh user1@{ip address}
 
 We can see the usage of a command in a number of ways:
 
-```
+```bash
 # see the man pages for a command 
 man mkdir
 # search the installed manual pages 
@@ -28,18 +28,18 @@ apropos log
 
 The `/usr/share/doc` directory stores documentation for all installed packages under sub-directories. This has a lot of information about the packages.
 
-```
+```bash
 ll -d /usr/share/doc/sudo*
 ```
 
 #### Directories
 
-```
+```bash
 # list files and directories
 ls
 # ll is an alias of ls -l
 type ll
---> ll is aliased to `ls -l --color=auto'
+#ll is aliased to `ls -l --color=auto'
 # shows the working directory
 pwd
 # change directory
@@ -52,7 +52,7 @@ cd ..
 
 #### Users
 
-```
+```bash
 # Display the terminal name we are logged on to
 tty
 # list the users currently logged into the system
@@ -79,7 +79,7 @@ lastlog
 
 #### System Information
 
-```
+```bash
 # see basic info about the system
 uname
 # view the hostname 
@@ -109,7 +109,7 @@ cal 2020
 
 Compression tools are used to save space
 
-```
+```bash
 # gzip creates a compressed file of each of the files
 gzip /root/anaconda-ks.cfg
 # unzip the file
@@ -119,7 +119,7 @@ gunzip /root/anaconda-ks.cfg
 
 Archiving tools include tar and star which have the ability to preserve general file attributes (ownership, group membership)
 
-```
+```bash
 # Create a tarball of the entire /home directory
 tar cvf /tmp/home.tar /home
 # to restore /home from home.tar
@@ -138,7 +138,7 @@ tar cvj --selinux --xattrs -f /tmp/file.tar.bz2 /home
 
 The star command is an enhanced version of tar. 
 
-```
+```bash
 # create a tarball containing entire /etc directory with all extended file attributes and SELinux file context
 star cvf /tmp/etc.tar -xattr -H=exustar /etc
 ```
@@ -147,7 +147,7 @@ star cvf /tmp/etc.tar -xattr -H=exustar /etc
 
 The vi editor is a text editing tool that allows you to create and modify text files. There's a multitude of options with vi to explore.
 
-```
+```bash
 # create a new file using vi
 vi new_file
 # exit and save using 
@@ -160,7 +160,7 @@ esc + :wq
 
 #### Shutdown
 
-```
+```bash
 # shutdown the system in 10 minutes and notify users
 shutdown +10 {message}
 # reboot the machine 

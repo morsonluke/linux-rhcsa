@@ -3,7 +3,7 @@
 Notes for RHCSA EX200 exam. Notes from:
 
 * "RHCSA & RHCE RHEL 7" by Asghar Ghori
-* "Operating Systems 4th Edition" 
+* "Operating Systems 4th Edition" by Andrew S. Tanenbaum & Herbert Bos
 * The funky titled Udemy course "Prepare RHCSA Exams with Real Exam Practice Test"
 * "How Linux Works" by Briand Ward
 

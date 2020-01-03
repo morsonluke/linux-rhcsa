@@ -4,7 +4,7 @@
 * A local variable is private to the shell in which it is created and its value cannot be used by processes that are not started in that shell
 * The value of an environmental variable is passed from the current shell to the sub-shell during the execution of a script. 
 
-```
+```bash
   # set the value of a token to be used later
   TOKEN=$(curl http://127.0.0.1:10080/login -u user | jq -r '.token')
   # a variable is a temporary storage of data in memory
@@ -19,13 +19,13 @@
 
 The primary command prompt for the root user is # and a regular user gets a $. We can customise the primary command prompt. 
 
-```
+```bash
   export PS1="<$LOGNAME@`hostname`:\$PWD>"
 ```
 
 The default locations for input, output and error are stdin, sdout and stderr. The locations can be < operator for stdin and > for stdout and stderr or using file descriptors of 0, 1 and 2 for stdin, stdout and stderr.
 
-```
+```bash
   # have the cat command output to standard out
   cat < /etc/cron.allow
   # redirect output of ll to ll.out
@@ -44,7 +44,7 @@ The default locations for input, output and error are stdin, sdout and stderr. T
   head < /proc/cpuinfo
 ```
 
-```
+```bash
   # location of history file
   echo $HISTFILE
   # see the history 
@@ -61,7 +61,7 @@ The default locations for input, output and error are stdin, sdout and stderr. T
 
 Linux has grep (global regular expression print) for when you fancy a bit of pattern matching. 
 
-```
+```bash
   # search for a pattern for the user in the file
   grep guser /etc/passwd
   # exclude lines that contains the pattern nologin
@@ -76,7 +76,7 @@ Linux has grep (global regular expression print) for when you fancy a bit of pat
 
 #### Metacharacters
 
-```
+```bash
   # list names of all files in /etc director that begin with t
   ls /etc/t*
   # list all directories under /var/log with three characters in their name
@@ -99,7 +99,7 @@ There are three quoting mechanisms that disbable their special meanings which ar
 | C   | Processor utilization for the process |
 | TTY | The terminal on which the process started. ? represents a background process |
 
-```
+```bash
   # see statistics in real time 
   top
   # sort processes by memory in top
@@ -109,7 +109,7 @@ There are three quoting mechanisms that disbable their special meanings which ar
   # kill process by precessing k followed by the process id
 ```
 
-```
+```bash
   # find the pid of cron
   pidof crond
   pgrep crond
@@ -119,7 +119,7 @@ There are three quoting mechanisms that disbable their special meanings which ar
 
 A process is spawned at a certain priority established by a numerical value called niceness. These go from -20 to +19. 
 
-```
+```bash
   # see niceness values
   ps -efl 
   # see default nice value
@@ -153,7 +153,7 @@ Job scheduling and execution is taken care of by two daemons: atd and crond. Whi
 
 User access is controlled in the /etc directory in allow/deny files.
 
-```
+```bash
 # add crontab enteries to a file
 crontab file
 # we can see all atd and cron activities 
@@ -164,7 +164,7 @@ at -f ~/.executablescript.sh now + 2 hours
 
 Submit an at job:
 
-```
+```bash
   at 11:30pm 1/6/20
   at> find / -name core -exec rm {} \; & /tmp/core.out
   # view list of jobs
@@ -209,7 +209,7 @@ The `/etc/crontab` file specifies the syntax that each cron job must comply with
 0 0 2-30/2 * * command
 ```
 
-``` 
+``` bash
   # edit crontab file and add something
   crontab -e
   # view the crontab for a user
