@@ -1,6 +1,11 @@
 # linux-rhcsa
 
-Notes from learning for RHCSA exam focused on passing the EX200 exam. Based largely on "RHCSA & RHCE RHEL 7" by Asghar Ghori. Notes also from "Operating Systems 4th Edition" and the funky titled Udemy course 'Prepare RHCSA Exams with Real Exam Practice Test'
+Notes for RHCSA EX200 exam. Notes from:
+
+* "RHCSA & RHCE RHEL 7" by Asghar Ghori
+* "Operating Systems 4th Edition" 
+* The funky titled Udemy course "Prepare RHCSA Exams with Real Exam Practice Test"
+* "How Linux Works" by Briand Ward
 
 These are my personal notes taken while learning so most of the content is copied from the book.
 
@@ -32,12 +37,12 @@ These are my personal notes taken while learning so most of the content is copie
 * 21: [Configuring DNS](chapters/configuring_dns.md)
 * 22: [Managing MariaDB](chapters/mariadb.md)
 
-#### RHCSA exam
+#### General Linux
+* 1: [Processes and Threads](chapters/processes_and_threads.md)
+* 2: [Cheatsheet](/chapters/cheats.md)
+
+#### RHCSA Exam
 
 * [Objectives](https://www.redhat.com/en/services/training/ex200-red-hat-certified-system-administrator-rhcsa-exam)
 * [RHEL8 Articles and videos](https://www.certdepot.net/rhel-8-articles-and-videos/)
 * [RHCSA labs and exercises](https://github.com/iahmad-khan/RHCSA)
-
-#### Other
-* 1: [Processes and Threads](chapters/processes_and_threads.md)
-* 2: [Cheatsheet](/chapters/cheats.md)
