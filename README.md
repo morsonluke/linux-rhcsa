@@ -2,6 +2,7 @@
 
 Notes for RHCSA EX200 exam. Notes from:
 
+* RHCSA/RHCE Red Hat Linux Certification Study Guide by Michael Jang & Alessandro Orsaria
 * "RHCSA & RHCE RHEL 7" by Asghar Ghori
 * "Operating Systems 4th Edition" by Andrew S. Tanenbaum & Herbert Bos
 * The funky titled Udemy course "Prepare RHCSA Exams with Real Exam Practice Test"
@@ -40,9 +41,3 @@ These are my personal notes taken while learning so most of the content is copie
 #### General Linux
 * 1: [Processes and Threads](chapters/processes_and_threads.md)
 * 2: [Cheatsheet](/chapters/cheats.md)
-
-#### RHCSA Exam
-
-* [Objectives](https://www.redhat.com/en/services/training/ex200-red-hat-certified-system-administrator-rhcsa-exam)
-* [RHEL8 Articles and videos](https://www.certdepot.net/rhel-8-articles-and-videos/)
-* [RHCSA labs and exercises](https://github.com/iahmad-khan/RHCSA)
