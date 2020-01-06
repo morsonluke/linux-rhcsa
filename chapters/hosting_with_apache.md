@@ -1,8 +1,8 @@
-# Hosting Websites with Apache
+## Hosting Websites with Apache
 
 The Apache HTTP server is a client/server application that relies on the `httpd` daemon running on the server to allow the transfer of web content. 
 
-```
+```bash
 # see if installed
 yum list installed | grep httpd
 # otherwise install
@@ -15,12 +15,30 @@ ll /var/log/httpd
 
 #### Defauly Apache Web Server
 
-```
+```bash
 yum -y install httpd elinks
 firewalld-cmd --permanent --add-service=http ; firewall-cmd --reload
 systemctl enable httpd
 systemctl start httpd
 elinks http://localhost
+```
+
+#### Configure Apache as an installation server 
+
+```bash
+# mount the dvd
+mount /dev/sr0 /media
+# create the directory
+mkdir /var/www/html/inst
+# copy files from the mounted DVD
+cp -a /media /var/www/html/inst
+# ensure correct SELinux context
+chcon -R --rerference=/var/www/html /var/www/html/inst
+# open port 80
+firewall-cmd --permananet --add-service=http
+firewall-cmd --reload
+# restart services
+systemctl restart httpd
 ```
 
 #### SSL/TLS

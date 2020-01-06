@@ -69,7 +69,7 @@ TCP Wrappers is a host-based mechanism that is used to limit access to wrappers-
 
 When a TCP client request comes in, the wrappers daemon `tcpd` scans the `hosts.allow` file and then the `hosts.deny` file.
 
-```
+```bash
 # see files 
 ll /etc/host*
 man tcpd

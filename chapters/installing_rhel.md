@@ -27,7 +27,7 @@ RHEL can be deployed various ways:
 #### Using VMware
 
 1. Download VMware Fusion for mac and choose the free license for 30 days option
-2. Download the Centos8 image from centos
+2. Download the CentOS8 image from Centos
 3. Create a new image. Ensure VMware is able to run in System Preferences -> Security
 4. The software selection can be 'Minimal Install'
 5. Accept 'Installation Destination' defaults and 'Begin Installation'
@@ -42,7 +42,7 @@ su -
 mkdir /dvdinstall
 # check which device has the DVD
 lsblk
-# mount drive
+# mount drive (dirve must be formatting usnig parted/fdisk)
 mount /dev/sr0 /dvdinstall
 # check 
 df -h

@@ -7,7 +7,7 @@ MariaDB is an open source database management system software that allows the cr
 
 #### Installing and Configuring MariaDB
 
-```
+```bash
 yum -y install mariadb-server
 systemctl enable mariadb
 mysql_secure_installation
@@ -20,4 +20,4 @@ mysql -u root -p
 
 #### Backing Up and Restoring
 
-A backup  is a function of duplicating data to an alternative location for use in the event of a data loss. Restore is the opposite - it retrieves data from a backup location and puts it back to its original  place.
+A backup  is a function of duplicating data to an alternative location for use in the event of a data loss. Restore is the opposite - it retrieves data from a backup location and puts it back to its original place.

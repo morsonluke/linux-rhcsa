@@ -12,7 +12,7 @@ An operational email has a heafty wedge of three letters abberviations to be und
 
 #### Postfix
 
-```
+```bash
 # see config files
 ll /etc/postfix
 # the access file can be used to establish access controls

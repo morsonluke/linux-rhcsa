@@ -2,7 +2,7 @@
 
 Notes for RHCSA EX200 exam. Notes from:
 
-* RHCSA/RHCE Red Hat Linux Certification Study Guide by Michael Jang & Alessandro Orsaria
+* "RHCSA/RHCE Red Hat Linux Certification Study Guide" by Michael Jang & Alessandro Orsaria
 * "RHCSA & RHCE RHEL 7" by Asghar Ghori
 * "Operating Systems 4th Edition" by Andrew S. Tanenbaum & Herbert Bos
 * The funky titled Udemy course "Prepare RHCSA Exams with Real Exam Practice Test"
@@ -26,7 +26,7 @@ These are my personal notes taken while learning so most of the content is copie
 * 12: [Administering Network Interfaces and Network Clients](chapters/network_interfaces_and_clients.md)
 * 13: [Securing Access with SSH and TCP Wrappers](chapters/ssh_tcp_wrappers.md)
 
-#### RHCE 
+#### RHCE
 
 * 14: [Writing Shell Scripts](chapters/writing_shell_scripts.md)
 * 15: [Firewalld and Kerberos](chapters/firewalld_and_kerberos.md)

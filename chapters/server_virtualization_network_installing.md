@@ -4,7 +4,7 @@ Server virtualization allows a physical computer to host several virtual machine
 
 Virtualization software deployed directly on bare-metal host machine is referred to as the hypervisor software. KVM (Kernel-based Virtual Machine) is part of the Linux Kernel and comes as a native hypervisor with RHEL7. QEMU then uses the physical-to-virtual CPU mappings provided by KVM. libvirt is the virtualization management library.
 
-```
+```bash
 # check if the processor supports virtualization
 lscpu | grep -i virtualization
 --> Virtualization:        VT-x
@@ -13,7 +13,7 @@ lscpu | grep -i virtualization
 grep vmx /proc/cpuinfo
 ```
 
-```
+```bash
 # install virtualization packages
 yum install qemu-kvm qemu-img libvirt libvirt-client
 # rather than memorising these packages see groups
@@ -30,7 +30,7 @@ yum groupinstall "Virtualization Platform"
 
 A virtual network switch is a libvirt-constructed software switch to allow the virtual machines to be able to communicate with the host and among one another. The host and virtual machines see this switch as a virtual network interface. 
 
-```
+```bash
 systemctl status libvirtd
 # see configuration
 ip addr show vibr0
@@ -38,18 +38,18 @@ ip addr show vibr0
 
 The default mode of operation for vibr0 is NAT with IP masquerading. NAT allows the network traffic of guest operating system to access external networks via the IP address of the host machine. 
 
-
 #### Virtualization Management Tools
 
 * The default hypervisor and virtual machine management software is libvirt. The virt-manager is the graphical equivalent of virt-install and virsh. 
 
-```
+```bash
 # open virt-manager graphical tool
 virt-manager
 ```
 
 #### Define a NAT Virtual Network Using virsh
-```
+
+```bash
 yum install libvirt
 # create rhnet_virsh.xml definition in /root
 virsh net-define /root/rhnet_virsh.xml
@@ -67,7 +67,7 @@ virsh net-info rhnet_virsh
 
 FTP is a standard networking protocol for transferring file between systems. In RHEL there is a version called very secure FTP or vsFTP which allows us to enable, disable and set security contorls on incoming service requests. The vsFTP daemon `vsftpd` communicates on port 21. 
 
-```
+```bash
 yum - y install vsftpd
 ```
 
@@ -75,7 +75,7 @@ yum - y install vsftpd
 
 `wget` is a non-interactive file download utility that allows you to retrieve a single file or entire directory from FTP, HTTP(S).
 
-```
+```bash
 wget -d www.redhat.com
 ```
 
@@ -85,7 +85,7 @@ A script called `logrotate` in `/etc/logrotate.d` manages the rotation of logfil
 
 #### The Journal 
 
-```
+```bash
 # see verbose output
 journalctl -o verbose
 ```
