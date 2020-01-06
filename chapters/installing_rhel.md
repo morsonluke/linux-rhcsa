@@ -58,7 +58,7 @@ Add the following:
 name=BaseOS
 baseurl=file:///{location}
 gpgcheck=0
-enanble=-1
+enable=1
 
 [AppStream]
 name=AppStream
