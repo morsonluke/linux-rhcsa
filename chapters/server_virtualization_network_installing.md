@@ -4,6 +4,18 @@ Server virtualization allows a physical computer to host several virtual machine
 
 Virtualization software deployed directly on bare-metal host machine is referred to as the hypervisor software. KVM (Kernel-based Virtual Machine) is part of the Linux Kernel and comes as a native hypervisor with RHEL7. QEMU then uses the physical-to-virtual CPU mappings provided by KVM. libvirt is the virtualization management library.
 
+#### Packages Associated with Virtualization
+
+| Package | Description |
+| ---     |       ---   | 
+| `qemu-kvm` |  The main KVM packages      |
+| `libvirt` |  Service to manage hypervisors   |
+| `libvirt-client` |  virsh command and clients APIs to manage VMs  |
+| `virt-instal` |  CLI tools for creating VMs   |
+| `virt-manager` |    GUI VM admin tool |
+| `virt-top` |     Display virtualization statistics   |
+| `virt-viewer` |    Graphical console to connect to VMs  |
+
 ```bash
 # check if the processor supports virtualization
 lscpu | grep -i virtualization
@@ -11,6 +23,8 @@ lscpu | grep -i virtualization
 --> Virtualization type:   full
 # check for flag vmx (intel processor) 
 grep vmx /proc/cpuinfo
+# check kernel modules are loaded
+lsmod | grep kvm
 ```
 
 ```bash

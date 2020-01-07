@@ -11,9 +11,9 @@ A software packages is a group of files organised in a directory structure along
 | 34 | package release |
 | el7 | stands for Enterprise Linux 7 |
 | x86_64 | processor architecture. "noarch" would signify platform independent |
-| .rpm | extension  |
+| .rpm | extension |
 
-Red Hat Subscription Manager (RHSM) isprovided by for subscription management and delivers teh software updates and support. Subscriptions for a single system can be managed by the Subscription Manager client application called `subcription-manager`. 
+Red Hat Subscription Manager (RHSM) is provided by for subscription management and delivers the software updates and support. Subscriptions for a single system can be managed by the Subscription Manager client application called `subcription-manager`. 
 
 ```bash
 # metadata for installed package files is stored in /var/lib/rpm directory
@@ -109,4 +109,25 @@ gpgcheck=0
 yum clean all
 # confirm repository has been created
 yum -v repolist
+```
+
+#### yum Transaction History
+
+```bash
+# see the yum history
+yum history list
+# see a summary
+yum history summary
+```
+
+#### DNF 
+
+* DNF stands for Dandified YUM and is a package manager for RPM-based Linux distributions
+* It is intended to be a replacement for YUM...
+
+```bash
+# list installed packaged
+dnf list installed
+# search pacakges
+dnf search httpd
 ```
