@@ -2,7 +2,9 @@
 
 Server virtualization allows a physical computer to host several virtual machines, each of which acts as a standalone computer running an OS.
 
-Virtualization software deployed directly on bare-metal host machine is referred to as the hypervisor software. KVM (Kernel-based Virtual Machine) is part of the Linux Kernel and comes as a native hypervisor with RHEL7. QEMU then uses the physical-to-virtual CPU mappings provided by KVM. libvirt is the virtualization management library.
+Virtualization software deployed directly on bare-metal host machine is referred to as the hypervisor software. KVM (Kernel-based Virtual Machine) is part of the Linux Kernel and comes as a native hypervisor with RHEL7. It enables mapping between physical CPUs on the host machine and virtual CPUs alloted to virtual machines.
+
+Quick Emulator (QEMU) then uses the physical-to-virtual CPU mappings provided by KVM. libvirt is the virtualization management library.
 
 #### Packages Associated with Virtualization
 
@@ -19,8 +21,6 @@ Virtualization software deployed directly on bare-metal host machine is referred
 ```bash
 # check if the processor supports virtualization
 lscpu | grep -i virtualization
---> Virtualization:        VT-x
---> Virtualization type:   full
 # check for flag vmx (intel processor) 
 grep vmx /proc/cpuinfo
 # check kernel modules are loaded
@@ -50,7 +50,7 @@ systemctl status libvirtd
 ip addr show vibr0
 ```
 
-The default mode of operation for vibr0 is NAT with IP masquerading. NAT allows the network traffic of guest operating system to access external networks via the IP address of the host machine. 
+The default mode of operation for virbr0 is NAT with IP masquerading. NAT allows the network traffic of guest operating system to access external networks via the IP address of the host machine. 
 
 #### Virtualization Management Tools
 
@@ -77,12 +77,63 @@ virsh net-list
 virsh net-info rhnet_virsh
 ```
 
+#### Create a Storage Pool and Volume Using virsh
+
+```bash
+# view available storage pools
+virsh pool-list 
+# makde the directoty
+mkdir /var/lib/libvirt/rhpol_virsh
+# define storage pool as dir
+virsh pool-define-as rhpol_virsh dir - - - - /var/lib/libvirt/rhpol_virsh
+# set automatic start-up
+virsh pool-autostart rhpol_virsh
+# start pool
+virsh pool-start rhpol_virsh
+# list pool
+virsh pool-list
+# view deatails of the pool
+virsh pool-info rhpol_virsh
+# create volume
+virsh vol-create-as rhpol_virsh rhvol_virsh 20G
+# list available volumes
+virsh vol-list rhpol_virsh
+```
+
 #### Configure FTP Installation Server
 
 FTP is a standard networking protocol for transferring file between systems. In RHEL there is a version called very secure FTP or vsFTP which allows us to enable, disable and set security contorls on incoming service requests. The vsFTP daemon `vsftpd` communicates on port 21. 
 
 ```bash
 yum - y install vsftpd
+# create a directory for storing the installation files
+mkdir /var/ftp/pub/rhel8
+# copy directory structure from the filesystem that has the DVD mounted
+cd /media && find . | cpio -pmd /var/ftp/pub/rhel8
+# add firewall rule
+firewall-cmd --permanent --add-service=ftp
+# reload
+firewall-cmd --reload
+# start and enable the service
+systemctl start vsftpd
+# may need to set SELinux
+chcon -R -t public_content_t /var/ftp/
+# check any errors
+journalctl -xe
+```
+
+Replace /media repo with FTP 
+
+```bash
+# remove any .repo configuration 
+rm /etc/yum.repos.d/dvdinstall.repo
+# eject the mount point from the dvd
+eject /media
+# create a new definition file and add config
+vi /etc/yum.repos.d/ftp.repo
+# check it has worked
+yum clean all 
+yum repolist
 ```
 
 #### The wget Utility 
