@@ -1,12 +1,15 @@
-# linux-rhcsa
+# Linux RHCSA
 
 Notes for RHCSA EX200 exam. Notes from:
 
-* "RHCSA/RHCE Red Hat Linux Certification Study Guide" by Michael Jang & Alessandro Orsaria
-* "RHCSA & RHCE RHEL 7" by Asghar Ghori
-* "Operating Systems 4th Edition" by Andrew S. Tanenbaum & Herbert Bos
-* The funky titled Udemy course "Prepare RHCSA Exams with Real Exam Practice Test"
-* "How Linux Works" by Briand Ward
+
+| Title | Authors |
+| --- | --- |
+| RHCSA/RHCE Red Hat Linux Certification Study Guide | Michael Jang & Alessandro Orsaria |
+| RHCSA & RHCE RHEL 7 | Asghar Ghori |
+| Operating Systems 4th Edition | Andrew S. Tanenbaum & Herbert Bos |
+| Udemy: "Prepare RHCSA Exams with Real Exam Practice Test" | Sanjaya Regmi |
+| How Linux Works | Briand Ward |
 
 These are my personal notes taken while learning so most of the content is copied from the book.
 
@@ -40,4 +43,7 @@ These are my personal notes taken while learning so most of the content is copie
 
 #### General Linux
 * 1: [Processes and Threads](chapters/processes_and_threads.md)
-* 2: [Cheatsheet](/chapters/cheats.md)
+
+#### Cheatshets
+
+* 1: [Cheatsheet](/chapters/cheats.md)
