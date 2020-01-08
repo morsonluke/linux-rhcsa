@@ -12,11 +12,14 @@ Quick Emulator (QEMU) then uses the physical-to-virtual CPU mappings provided by
 | ---     |       ---   | 
 | `qemu-kvm` |  The main KVM packages      |
 | `libvirt` |  Service to manage hypervisors   |
-| `libvirt-client` |  virsh command and clients APIs to manage VMs  |
-| `virt-instal` |  CLI tools for creating VMs   |
-| `virt-manager` |    GUI VM admin tool |
-| `virt-top` |     Display virtualization statistics   |
-| `virt-viewer` |    Graphical console to connect to VMs  |
+| `libvirt-client` | virsh command and clients APIs to manage VMs |
+| `virt-install` | CLI tools for creating VMs   |
+| `virt-manager` | GUI VM admin tool |
+| `virt-top` | Display virtualization statistics   |
+| `virt-viewer` | Graphical console to connect to VMs  |
+
+To enable virtualization in VMWare on a host:
+* System Settings -> Processors & Memory -> "Enable hypervisor application in this virtual machine"
 
 ```bash
 # check if the processor supports virtualization
@@ -28,8 +31,10 @@ lsmod | grep kvm
 ```
 
 ```bash
+# at this point we could set Selinux to permissive mode
+setenforce 0
 # install virtualization packages
-yum install qemu-kvm qemu-img libvirt libvirt-client
+yum install virt-manager libvirt libvirt-client
 # rather than memorising these packages see groups
 yum grouplist hidden
 # see what the group includes
@@ -38,6 +43,8 @@ yum group info "Virtualization Client"
 yum groupinstall "Virtualization Client"
 yum groupinstall "Virtualization Tools"
 yum groupinstall "Virtualization Platform"
+# restart the virtualization daemon
+systemctl restart libvirtd
 ```
 
 #### Virtual Network Switch
@@ -122,6 +129,12 @@ chcon -R -t public_content_t /var/ftp/
 journalctl -xe
 ```
 
+It seems like using the DVD is not an option so in one test the .iso file was copied to the VM
+
+```bash
+scp ~/Documents/rhel-8.1-x86_64-dvd.iso {username}@192.168.98.130:~/
+```
+
 Replace /media repo with FTP 
 
 ```bash
@@ -134,6 +147,27 @@ vi /etc/yum.repos.d/ftp.repo
 # check it has worked
 yum clean all 
 yum repolist
+```
+
+#### KVM 
+
+* Configuration files can be found in `/etc/libvirt` and `/var/lib/libvirt`
+* We can view XML configuration files in `/etc/libvirt/qemu`
+
+```bash
+# destroy a VM using virsh
+virsh destroy server1.example.com
+# delete associated configuration files
+virsh undefine server1.example.com --remove--all-storage
+```
+
+```bash
+# virsh starts a front end to existing KVM VMs
+(virst #) list 
+# start a VM
+virsh start server1.example.com
+# shutdown a VM
+virsh shutdown 
 ```
 
 #### The wget Utility 

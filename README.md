@@ -44,6 +44,9 @@ These are my personal notes taken while learning so most of the content is copie
 #### General Linux
 * 1: [Processes and Threads](chapters/processes_and_threads.md)
 
+#### Networking
+* 1: [VMWare Fusion Networking](networking/vmware.md)
+
 #### Cheatshets
 
 * 1: [Cheatsheet](/chapters/cheats.md)
