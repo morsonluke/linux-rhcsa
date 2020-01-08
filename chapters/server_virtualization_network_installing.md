@@ -170,6 +170,14 @@ virsh start server1.example.com
 virsh shutdown 
 ```
 
+#### Kickstart
+
+* This is the automated solution for installing RHEL
+* Methods for creating include: 
+    * Starting with the `anaconda-ks.cfg` file from root user's home directory
+    * Use graphical Kickstart Configuration via `system-config-kickstart` command 
+
+
 #### The wget Utility 
 
 `wget` is a non-interactive file download utility that allows you to retrieve a single file or entire directory from FTP, HTTP(S).
