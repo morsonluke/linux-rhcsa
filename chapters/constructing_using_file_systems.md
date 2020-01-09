@@ -52,3 +52,14 @@ Label a file system
 # xfs_admin -L bootfs /dev/sda1
 # mount /boot
 ```
+
+#### Access Control Lists
+
+* With ACLs, you can give selected users rwx permissions to selected files in your home directory
+* This provides a second level of discretionary access control
+* To configure ACLs the filesystem needs to be mounted with the acl option. ACLs are supported on XFS and NFS v4. 
+
+```bash
+# see the ACLs for the file 
+getfacl anaconda-ks.cfg
+```

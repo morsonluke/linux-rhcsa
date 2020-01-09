@@ -185,7 +185,7 @@ chmod go+w newfile
 # remove write permissions for the public
 chmod o-w newilfe
 # assign rwx for all u,g,o using octal notation
-chmod 777 newfile
+chmod umnewfile
 # allow specific access
 chmod u=rw,g=rwx,o=--- /tmp/project/
 ```
@@ -205,7 +205,31 @@ chown newuser:newgroup newfile
 chown -R user100:user100 dir
 ```
 
+We can see how the umask is defined in `/etc/profile`:
+
+```bash
+if [ $UID -gt 199 ] && [ "`/usr/bin/id -gn`" = "`/usr/bin/id -un`" ]; then
+    umask 002
+else
+    umask 022
+fi
+```
+
+`umask` cannot be configured to allow automatic creation of executable files so the:
+
+| umask | Created files |
+| --- | --- | 
+| 000 | 666 (rw-rw-rw-) | 
+| 002 | 664 (rw-rw-r--) |
+| 022 | 644 (rw-r--r--) |
+
 #### Special Permissions
+
+| Special Permission | On an Executable | On a Directory |
+| --- | --- | --- |
+| SUID | When the file is executed, the effective user ID of the process is that of the file | No effect | 
+| SGID | When the file is executed, the effective group ID of the processes is that of the file | Gives files created in the directory of the same group ownership as that of the directory |
+| Sticky bit | No effect | Files in the directory can be renamed of removed only by their owners |
 
 setuid is set on executable files at the owner level. With this bit set, the file is executed by other regular users with the same priviledges at that of the owner. 
 

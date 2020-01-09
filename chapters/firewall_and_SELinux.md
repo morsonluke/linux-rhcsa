@@ -5,7 +5,7 @@
 
 ####  iptables
 
-Managing iptables can be done with firewalld or without. In the presence of both  only one can be used at a time.
+Managing iptables can be done with firewalld or without. In the presence of both only one can be used at a time.
 
 * CLI: firewall-cmd || GUI firewall-config - > firewalld daemon -> iptables command -> netfilter kernel module
 
@@ -15,7 +15,7 @@ See which packages are installed
     $ yum list installed | egrep 'iptables|firewalld'
 ```
 
-Stop firewalld and enabnle iptables
+Stop firewalld and enable iptables
 
 ```bash
     $ systemctl enable firewalld

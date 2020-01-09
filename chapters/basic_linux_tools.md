@@ -103,6 +103,8 @@ lsusb
 lscpu
 # see the calendar
 cal 2020
+# see the difference between two files
+diff /etc/passwd /root/passwd1
 ```
 
 #### Compression Tools
