@@ -27,7 +27,7 @@ The structure is divided into two sets. One holds the file system's metadata inf
 
 ext3 onwards support a journaling mechanism that keeps track of their structural changes in a journal. This helps with crash recovey. 
 
-```
+```bash
 # show file system utilization
 df
 # calculate disk usage of directories and file systems

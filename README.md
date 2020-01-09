@@ -11,7 +11,7 @@ Notes for RHCSA EX200 exam. Notes from:
 | Udemy: "Prepare RHCSA Exams with Real Exam Practice Test" | Sanjaya Regmi |
 | How Linux Works | Briand Ward |
 
-These are my personal notes taken while learning so most of the content is copied from the book.
+These are my personal notes written while learning, so most of the content is copied from the books.
 
 #### RHCSA
 
@@ -42,11 +42,11 @@ These are my personal notes taken while learning so most of the content is copie
 * 22: [Managing MariaDB](chapters/mariadb.md)
 
 #### General Linux
-* 1: [Processes and Threads](chapters/processes_and_threads.md)
+* [Processes and Threads](chapters/processes_and_threads.md)
 
 #### Networking
-* 1: [VMWare Fusion Networking](networking/vmware.md)
+* [VMWare Fusion Networking](networking/vmware.md)
 
-#### Cheatshets
+#### Cheatsheets
 
-* 1: [Cheatsheet](/chapters/cheats.md)
+* [Cheatsheet](/chapters/cheats.md)

@@ -10,11 +10,13 @@ Managing iptables can be done with firewalld or without. In the presence of both
 * CLI: firewall-cmd || GUI firewall-config - > firewalld daemon -> iptables command -> netfilter kernel module
 
 See which packages are installed 
+
 ```bash
     $ yum list installed | egrep 'iptables|firewalld'
 ```
 
 Stop firewalld and enabnle iptables
+
 ```bash
     $ systemctl enable firewalld
     $ systemctl start firewalld
@@ -31,6 +33,7 @@ Stop firewalld and enabnle iptables
 ```
 
 Add and activate iptables Rules
+
 ```bash
     # remove all existing rules
     $ iptables -F

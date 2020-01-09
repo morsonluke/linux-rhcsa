@@ -17,7 +17,7 @@ The /etc/exports file defines the configuration for NFS shares.
 
 #### Export Shares to NFS Clients 
 
-```
+```bash
 yum -y install nfs-utils
 mkdir /common/nfsrhcsa
 setsebool -P  nfs_export_all_ro=1 nfs_export_all_rw=1
@@ -34,7 +34,7 @@ systemctl status rpcbind nfs
 /nfsrhcsa  server2.example.com(sync)
 ```
 
-```
+```bash
 # added this line to /etc/hosts
 192.168.4.220   server2.example.local   server2
 # export entries defined in /etc/exports file
@@ -44,7 +44,7 @@ cat /var/lib/nfs/etab
 
 #### Mount a Share on NFS Client 
 
-```
+```bash
 yum -y install nfs-utils
 mkdir /nfsrhcemnt
 systemctl enable rpcbind

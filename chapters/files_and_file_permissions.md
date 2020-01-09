@@ -177,7 +177,7 @@ Permission classes are user, group and public. Permission types are read, write 
 
 `chmod` can modify permissions using either **symbolic** or **octal** notation. In the three 3-digit octl numbering we have X-X-X with the corresponding weights  4-2-1.
 
-```
+```bash
 # add execute permission for the owner
 chmod u+x newfile -v
 # add write permission for group members and public
@@ -192,7 +192,7 @@ chmod u=rw,g=rwx,o=--- /tmp/project/
 
 Linux assigns default permissions to a file/directory at the time of its creation. These are calculated from the umask permission value substracted from a preset value called initial permissions. In RHEL the default umask is 0022 for the root and 0002 for all regular users. 
 
-```
+```bash
 # see the umask value
 umask
 # change ownership of file to newuser
@@ -209,7 +209,7 @@ chown -R user100:user100 dir
 
 setuid is set on executable files at the owner level. With this bit set, the file is executed by other regular users with the same priviledges at that of the owner. 
 
-```
+```bash
 ll /usr/bin/su
 --> -rwsr-xr-x. 1 root root 32208 Mar 14 10:37 /usr/bin/su
 # remove the setuid
@@ -220,7 +220,7 @@ chmod 4755 /usr/bin/su
 
 setgid is the same concept but at the group level.
 
-```
+```bash
   # see an example with setgid
   ll /usr/bin/wall
   # remove setgid
@@ -231,7 +231,7 @@ setgid is the same concept but at the group level.
 
 Use setgid for Group collaboration
 
-```
+```bash
   # add group sdatagrp 
   groupadd -g 9999 sdatagrp
   # add users
@@ -249,7 +249,7 @@ Use setgid for Group collaboration
 
 The sticky bit is set on public writable directories. This protects file and sub-directories being deleted by other regular users. 
 
-```
+```bash
   ll -d /tmp
   # The bolded t in
   drwxrwxrwt. 8 root root 172 Aug 28 08:18 /tmp
