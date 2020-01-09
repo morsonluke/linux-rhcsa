@@ -76,3 +76,19 @@ man tcpd
 ```
 
 All messagaes related to TCP Wrappers are logged to `/var/log/secure`
+
+#### Similar Tools
+
+The `telnet` command is used to communicate with another host using the TELNET protocol. 
+
+```bash
+# see if the local vsFTP service is running on port 21
+telnet localhost 21
+```
+
+Nmap is an open source tool for network exploration and security auditing. 
+
+```bash
+# see what ports are open on the localhost
+nmap localhost
+````

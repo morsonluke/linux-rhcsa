@@ -10,3 +10,12 @@
 | `CTRL-U` | Erase from cursor to beginning of line | 
 | `CTLR-K` | Erase from cursor to end of line | 
 | `CLTR-Y` | Paste erased text |
+
+#### vi 
+
+| Combo | Action |
+| --- | --- |
+| `0` | Go to start of line |
+| `$` | Go to the end of the line | 
+| `H` | Move to the top of the window | 
+| `L` | Move to the bottom of the window | 

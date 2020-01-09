@@ -42,6 +42,7 @@ The default locations for input, output and error are stdin, sdout and stderr. T
   head /proc/cpuinfo | tr a-z A-Z
   # channel a file to a program's standard input
   head < /proc/cpuinfo
+  # redirect output from dmesg to less 
 ```
 
 ```bash
@@ -55,6 +56,13 @@ The default locations for input, output and error are stdin, sdout and stderr. T
   !!
   # current directory
    echo ~+
+```
+
+RHEL 7 had four command-line shells: bash, ksh, tcsh & zsh. We can change the default shell: 
+
+```bash
+  # modify default shell in /etc/password for a user
+  ksh_user:x:1002:1002::/home/ksh_user:/bin/ksh
 ```
 
 #### grep
@@ -72,6 +80,8 @@ Linux has grep (global regular expression print) for when you fancy a bit of pat
   grep bash$ /etc/passwd 
   # print all lines from ll that contain cron or qemu
   ll /etc | grep -E 'cron|qemu'
+  # see all lines that aren't blank or contain a comment
+  grep -v '^$' /etc/nsswitch.conf | grep -v '^#'
 ```
 
 #### Metacharacters
@@ -88,6 +98,16 @@ Linux has grep (global regular expression print) for when you fancy a bit of pat
 ```
 
 There are three quoting mechanisms that disbable their special meanings which are `\, '', ""`.
+
+| Metacharacter | Description |
+| --- | --- |
+| `.` | Any single character |
+| `[]`| Match any single character included within the [] e.g. `grep 'v[abc]grant /etc/passwd` |
+| `?` |  Match the preceding element zero or one time |
+| `+` |  Match the preceding element one or more times |
+| `*` |  Match the preceding element zero or mote times `grep 'jo[a-z]*n' /etc/passwd` |
+| `^` |  Match the beginning of a line |
+| `$` |  Match the end of a line |
 
 #### Processes
 
