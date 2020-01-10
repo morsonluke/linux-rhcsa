@@ -2,11 +2,7 @@
 
 The Kernel controls everything on the Linux system. `systemd` is the default system inititialization scheme in RHEL7 replacing init and Upstart.
 
-The boot process on an x86 computer can be split into 4 main phases:
-    * Firmware phase
-    * Boot loader phase
-    * Kernel phase
-    * Initialization phase
+The boot process on an x86 computer can be split into 4 main phases: Firmware phase, Boot loader phase, Kernel phase & Initialization phase
 
 * The firmware is the BIOS or the UEFI code that is stored in flash memory on the x86 system board. The first thing that it does is run the power-on-self-test (POST) to detect, test and initialize the system hardware componenets
 * When it discovers a boot device, it loads GRUB2 into memory and passes control over to it
@@ -81,30 +77,30 @@ pstree -pu
 Units are systemd objects that used for organizing boot and maintenance taks. systemctl is the primary command for interaction with systemd.
 
 ```bash
-# list all known units and their status
-systemctl
-# see units of type socket
-systemctl -t mount --all
-# see loaded and active targets
-systemctl -t target
+  # list all known units and their status
+  systemctl
+  # see units of type socket
+  systemctl -t mount --all
+  # see loaded and active targets
+  systemctl -t target
 ```
 
 Targets are logical collection of units. They are a special systemd unit type with the .target file extension. 
 
 
 ```bash
-# list all units of type socket
-systemctl list-sockets
-# lit unit files
-systemctl list-unit-files
-# check the status of atd
-systemctl status atd
-# list dependencies
-systemctl list-dependencies atd
-# show details for the atd service
-systemctl show atd
-# view time spent by each task during the boot process
-systemd-analyze blame
+  # list all units of type socket
+  systemctl list-sockets
+  # lit unit files
+  systemctl list-unit-files
+  # check the status of atd
+  systemctl status atd
+  # list dependencies
+  systemctl list-dependencies atd
+  # show details for the atd service
+  systemctl show atd
+  # view time spent by each task during the boot process
+  systemd-analyze blame
 ```
 
 #### System Logging
