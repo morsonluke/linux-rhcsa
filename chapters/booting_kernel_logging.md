@@ -10,11 +10,10 @@ The boot process on an x86 computer can be split into 4 main phases:
 
 * The firmware is the BIOS or the UEFI code that is stored in flash memory on the x86 system board. The first thing that it does is run the power-on-self-test (POST) to detect, test and initialize the system hardware componenets
 * When it discovers a boot device, it loads GRUB2 into memory and passes control over to it
-* GRUB2 is loaded into memory and takes control, it search for the kernel in `/boot` file system. 
-* The configuration can be seen in `/boot/grub2/grub.cfg`. 
+* GRUB2 is loaded into memory and takes control, it searches for the kernel in `/boot` file system
+* The configuration can be seen in `/boot/grub2/grub.cfg` 
 
-
-```
+```bash
   # see the defined GRUB behavior
   /etc/default/grub
   # reproduce the grub.cfg file
@@ -28,7 +27,7 @@ The boot process on an x86 computer can be split into 4 main phases:
 
 #### Resetting the Root User Password
 
-```
+```bash
   # interact with GRUB as shown above
   # find boot string that starts with linux16 and append
   init=/sysroot/bin/sh
@@ -45,18 +44,17 @@ The boot process on an x86 computer can be split into 4 main phases:
 
 #### Linux Kernel
 
-```
-# determine the Kernel version
-uname -r
---> 3.10.0-957.27.2.el7.x86_64
-# view currently loaded modules
-lsmod
-# see detail about a module
-modinfo kvm
-# see info about kernel
-cat /proc/version
-# see infomation about a moduke
-modinfo dm_mirror
+```bash
+  # determine the Kernel version
+  uname -r
+  # view currently loaded modules
+  lsmod
+  # see detail about a module
+  modinfo kvm
+  # see info about kernel
+  cat /proc/version
+  # see infomation about a moduke
+  modinfo dm_mirror
 ```
 
 #### init and Upstart
@@ -65,14 +63,14 @@ The init program is the first process that spawns in the userland at system boot
 
 #### systemd
 
-systemd is short for system daemon. It improves system init and state transitioning by introducing parrallel processing of startup scripts, improved handling of service dependencies, and an on-demend activation of service daemons using sockets and D-Bus. 
+`systemd` is short for system daemon. It improves system init and state transitioning by introducing parrallel processing of startup scripts, improved handling of service dependencies, and an on-demend activation of service daemons using sockets and D-Bus. 
 
 systemd creates sockets for all enabled services that support sock-based activation instantaneously at the very beginning of the initialization process, and passes them to daemon processes as theh attempts to start in parrallel. 
 
 * Socket is a communication method that allows a single process running on a system to talk to another processes on the same or remote system
 * D-Bus is another communication method that allows mutliple services running in parallel on a system to talk to one another on the same or remote system
 
-```
+```bash
 yum install psmisc
 # see pstree
 pstree -pu
@@ -80,11 +78,9 @@ pstree -pu
 
 #### Units
 
-Units are systemd objects that used for organizing boot and maintenance taks.
+Units are systemd objects that used for organizing boot and maintenance taks. systemctl is the primary command for interaction with systemd.
 
-systemctl is the primary command for interaction with systemd.
-
-```
+```bash
 # list all known units and their status
 systemctl
 # see units of type socket
@@ -96,7 +92,7 @@ systemctl -t target
 Targets are logical collection of units. They are a special systemd unit type with the .target file extension. 
 
 
-```
+```bash
 # list all units of type socket
 systemctl list-sockets
 # lit unit files
@@ -110,7 +106,6 @@ systemctl show atd
 # view time spent by each task during the boot process
 systemd-analyze blame
 ```
-
 
 #### System Logging
 

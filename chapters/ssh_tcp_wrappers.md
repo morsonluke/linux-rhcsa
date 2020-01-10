@@ -36,12 +36,13 @@ cat /etc/ssh/ssh_config
 
 #### Commands 
 
-| Command | Description | 
+| Command/Utility | Description | 
 | --- | --- |
 | scp |  secure alternative to `rcp`|
 | sftp |   ... `ftp` |
 | slogin |   ... `rlogin`  |
 | ssh |  ... `telnet` and `rlogin` |
+| sshd | The deamon service | 
 | ssh-add | Adds characteristics to ssh-agent |
 | ssh-agent |  Auth agent. Holds private keys used |
 | ssh-copy-id | Copies keys to remote systems  |
@@ -51,6 +52,10 @@ Configure private/public key-based auth:
 
 ```bash
   ssh-keygen
+  # create a RSA key with more bits
+  ssk-keygen -b 8192
+  # create a key with DSA algorithm
+  ssh-keygen -t dsa
   # view the file
   cat ~/.ssh/id_rsa
   # copy file to server2
@@ -60,7 +65,7 @@ Configure private/public key-based auth:
   # execute a command using ssh
   ssh server /bin/cat ~/.ssh/authorized_keys
   # using sftp 
-  sftp server2 
+  sftp server2
 ```
 
 #### TCP Wrappers
