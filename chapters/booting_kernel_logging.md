@@ -48,6 +48,20 @@ grub> initrd (hd1,gpt2)/initramfs-4.18.0.147.el8.x86_64.img
 grub> boot
 ```
 
+#### Reinstalling GRUB2
+
+```bash
+# see the config files and remove
+rpm -qc grub2-tools
+rm -rf /etc/grub.d/*
+rm -f /etc/default/grub
+# reinstall grub2
+yum install grub2-tools
+# attempt to re-created the grub.cfg file
+grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+# 
+```
+
 #### Resetting the Root User Password
 
 ```bash
