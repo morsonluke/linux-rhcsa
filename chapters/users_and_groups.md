@@ -4,7 +4,7 @@ RHEL supports three fundamental user account types: root, normal and service.
 
 User account information for local users is stored in the `/etc` directory in `passwd, shadow, group and gshadow`.
 
-```
+```bash
 # check for inconsistencies in passwd and shadow files
 pwck
 # check for same with group and gshadow files
@@ -15,17 +15,17 @@ vigr -s
 ```
 
 | Command | Description | 
-| ---     |             |
+| ---     |  ---     |
 | pwconv, grpconv  | Create and updates the shadow/gshadow file and moves user passwords over from the passwd/group file |
 | pwunconv, grpunconv | Moves user passwords back to the passwd/group file and removes the shadow/gshadow file | 
 
 #### Users
 
-```
+```bash
 # see default values for useradd command
 useradd -Dte
 # add a test user
-useradd testuser sh 
+useradd testuser sh
 # see what has been added to the different files 
 cd /etc; grep testuser passwd shadow group gshadow
 # modify users GECOS
@@ -34,7 +34,7 @@ usermod -c newvalue testuser
 
 Create a user with no login access
 
-```
+```bash
 # create a user with no login access
 useradd -s /sbin/nologin user4 
 # assign a passwod
@@ -47,7 +47,7 @@ passwd -n 7 -x 28 -w 5 testuser
 
 Set up password aging on user accounts
 
-```
+```bash
 # add password aging
 passwd -n 7 -x 29 -w 4 student
 # see changes
@@ -60,7 +60,7 @@ chage -d 0 -m 5 -E -1 student
 userdel -r user4
 ```
 
-```
+```bash
 # create a user with sudo access
 sudo adduser tableau-admin
 sudo passwd tableau-admin
@@ -72,7 +72,7 @@ su - c 'firewall-cmd --list-services'
 
 #### Groups
 
-```
+```bash
 # add a group
 groupadd -g 5000 linuxadmins
 # add another group sharing the GID of the same group
@@ -89,7 +89,7 @@ The sudo utility is designed to provide protected access to administrative funct
 
 The file contains example of how access is defined such as for members of the wheel group. 
 
-```
+```bash
 ## Allows people in group wheel to run all commands
 %wheel	ALL=(ALL)	ALL
 ```
@@ -102,5 +102,5 @@ The file contains example of how access is defined such as for members of the wh
 
 Per user shell start up files override  or modify system defaults
 
-* `~/.bashrc` defines functions and aliases.  
-* `~/.bash_profile` sets environmental variables. 
+* `~/.bashrc` defines functions and aliases
+* `~/.bash_profile` sets environmental variables

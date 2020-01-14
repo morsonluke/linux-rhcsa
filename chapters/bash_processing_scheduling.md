@@ -70,6 +70,8 @@ RHEL 7 had four command-line shells: bash, ksh, tcsh & zsh. We can change the de
 Linux has grep (global regular expression print) for when you fancy a bit of pattern matching. 
 
 ```bash
+  # grep follows the basic patter
+  grep [OPTIONS] PATTERN [FILE...]
   # search for a pattern for the user in the file
   grep guser /etc/passwd
   # exclude lines that contains the pattern nologin
