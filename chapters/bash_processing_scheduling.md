@@ -137,9 +137,15 @@ There are three quoting mechanisms that disbable their special meanings which ar
   pgrep crond
   # list all processes ownder by root
   ps -U root
+  # install packages for sar
+  yum install sysstat
+  # the sar command can be used to provide system activity report
+  sar -A
+  # iostat shows CPU and storage device statistics every 10 seconds for 10 reports
+  iostat 10 10
 ```
 
-A process is spawned at a certain priority established by a numerical value called niceness. These go from -20 to +19. 
+A process is spawned at a certain priority established by a numerical value called niceness. These go from -20 to +19 with -20 being the highest priority. 
 
 ```bash
   # see niceness values
@@ -238,4 +244,29 @@ The `/etc/crontab` file specifies the syntax that each cron job must comply with
   crontab -l
   # remove
   crontab -r
+```
+
+#### Log File Analysis
+
+* RHEL 7 comes with two logging systems: `rsyslog` and an enhanced logging daemon called `ststemd-journal`
+* What is logged can be configured in `/etc/rsyslog.conf`. In descending order the log priorities are debug, info, notice, warn, err, crit, alert, emerg
+* Logs rotation is defined in `/etc/logrotate.conf`
+
+```bash
+# an example from /etc/rsyslog.conf
+*.info;mail.none;authpriv.none;cron.none     /var/log/messages
+```
+
+* The systemd journal logs all boot, kernel, and service
+messages in a ring buffer inside the `/run/log/journal` directory
+
+```bash
+# see entries of priority err of above
+journalctl -p err
+# see entries since yesterday
+journalctl --since yesterday
+# see entries associated wiht user ID 1001
+journalctl _UID=1001
+# see entries related to nslc daemon
+journalctl _COMM=nslcd
 ```

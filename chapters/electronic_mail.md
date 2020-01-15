@@ -1,8 +1,8 @@
 # Sending and Receiving Electronic Mail
 
-Simple Mail Transport Protocol (SMTP) is a networking protocol responsinle for email communication. It runs on top of the IP protocol and uses well-known TCP port 25 for its operation. 
+Simple Mail Transport Protocol (SMTP) is a networking protocol resposible for email communication. It runs on top of the IP protocol and uses well-known TCP port 25 for its operation. 
 
-An operational email has a heafty wedge of three letters abberviations to be understood:
+An operational email system has a hefty wedge of three letters abberviations to be understood:
 * Mail User Agent (MUA)
 * Mail Submission Agent(MSA)
 * Mail Transport Agent (MTA) 

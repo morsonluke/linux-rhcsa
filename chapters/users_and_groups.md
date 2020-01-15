@@ -70,6 +70,15 @@ sudo usermod -aG wheel tableau-admin
 su - c 'firewall-cmd --list-services'
 ```
 
+We can see in AWS how it is automatically created for the `centos` user: 
+
+```bash
+# Created by cloud-init v. 0.7.5 on Tue, 20 Feb 2018 15:42:11 +0000
+
+# User rules for centos
+centos ALL=(ALL) NOPASSWD:ALL
+```
+
 #### Groups
 
 ```bash
