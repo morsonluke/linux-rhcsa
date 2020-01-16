@@ -132,7 +132,7 @@ tar cvf /tmp/files.tar file1 file2
 tar tvf files.tar
 # restore the files
 tar xvf files.tar
-# make a tar and compress with bzip2
+# make a tar and compress with gzip
 tar cvzf files.tar.gz /vagrant/
 # also preserve selinux and attributes and compress with bzip2
 tar cvj --selinux --xattrs -f /tmp/file.tar.bz2 /home

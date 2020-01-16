@@ -269,4 +269,8 @@ journalctl --since yesterday
 journalctl _UID=1001
 # see entries related to nslc daemon
 journalctl _COMM=nslcd
+# create directory to persist logs 
+mkdir -p /var/log/journal 
+# restart journald
+systemscl restart systmed-journald
 ```

@@ -102,6 +102,9 @@ Add telnet:
 | SELINUXTYPE | Specifies level of protection; set to `targeted` by default. The alternative is `mls` which is associated with multi level security | 
 
 ```bash
+    # see the state of SELinux
+    getenforce
+    sestatus
     # see the root user has no restrictions
     $ id -Z unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
     # see the other SeLinux users
@@ -111,9 +114,6 @@ Add telnet:
     $ ps -eZ
     # see context information for a file
     $ ll -Z /etc/passwd
-    # see the state of SELinux
-    getenforce
-    sestatus
     # change to permissive
     setenforce permissive
 ```
