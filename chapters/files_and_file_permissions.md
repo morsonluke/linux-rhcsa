@@ -6,17 +6,19 @@
 * `/usr/lib` contains shared library routines requires by commands/programs in /usr/bin and /user/sbin and kernel and other programs
 * `usr/sbin` contains system admin commands not intended for execution by regular users.
 * The `/dev` file system contains device nodes for physical hardware and virtual devices. These device nodes are created and deleted by the udevd service as necessary. There are two types of device files: character (or raw) and block. Character ddevices are access serially while block devices parallely
-* `/proc` maintains the information about the current state of the Kernel. The contents are created in memory at boot time and a number of system utilities such as `top, ps etc.` are actually referencing these files 
+* `/proc` maintains the information about the current state of the Kernel. The contents are created in memory at boot time and a number of system utilities such as `top, ps etc.` are actually referencing these files
 
-```
+```bash
 # see the output of the files from /proc
 cat /proc/cpuinfo
 cat /proc/meminfo
+# use free which reads from /proc/meminfo to display similar  information 
+free
 ```
 
 #### Paths
 
-```
+```bash
 # see absolute path in relation to /
 pwd
 # see the type of file
@@ -27,7 +29,7 @@ ll /usr/sbin/vigrlrwxrwxrwx. 1 root root 4 Aug  8 12:39 /usr/sbin/vigr -> vipw
 
 #### Create Files and Directories
 
-```
+```bash
 # create a file using touch
 touch newfile
 # create a file using cat, add text and Cltr+d
@@ -42,7 +44,7 @@ mkdir newdir
 
 The ll command list files and dictories
 
-```
+```bash
 -rw-rw-r--. 1 guser guser 5 Aug 28 12:19 newfile
 ```
 
@@ -58,7 +60,7 @@ The ll command list files and dictories
 
 #### Displaying Contents of Files
 
-```
+```bash
 # display contents using cat
 cat .bash_profile
 # use more to and less to view long text fiels
@@ -76,7 +78,7 @@ lsof +L1
 
 #### Copying and moving files
 
-```
+```bash
 # copy file1 to file2 in the same directory
 cp file1 file2
 # copy a directory using the -r flag
@@ -105,7 +107,7 @@ There are two commands lsattr and chattr that are used for attribute management.
 | i | file cannot be changed, renamed or deleted |
 | S | changes in a file are written synchronously to disk | 
 
-```
+```bash
 # see the current attributes for a file
 lsattr file1
 # update attribues of a file
@@ -124,7 +126,7 @@ The find command is very powerful as it can recursively search the directory tre
 
 It takes the form `find path search option action`
 
-```
+```bash
 # find a file in the home directory
 find . -name -filetofind -print
 # find files large than 100MB in /proc directory
@@ -145,7 +147,7 @@ A soft link or symlink allows one file to be associated with another.
 
 Hard links associate files with a single inode number making all files undistinguishable.
 
-```
+```bash
 # create a soft link for the newfile in the home directory
 cd ~
 ln -s newfile newfilelinked
@@ -245,42 +247,42 @@ chmod 4755 /usr/bin/su
 setgid is the same concept but at the group level.
 
 ```bash
-  # see an example with setgid
-  ll /usr/bin/wall
-  # remove setgid
-  chmod g-s /usr/bin/wall
-  # put it back
-  chmod 2555 /usr/bin/wall
+# see an example with setgid
+ll /usr/bin/wall
+# remove setgid
+chmod g-s /usr/bin/wall
+# put it back
+chmod 2555 /usr/bin/wall
 ```
 
 Use setgid for Group collaboration
 
 ```bash
-  # add group sdatagrp 
-  groupadd -g 9999 sdatagrp
-  # add users
-  usermod -G sdatagrp user100
-  usermod -G sdatagrp user200
-  # create directory
-  mkdir /sdata
-  # set ownership 
-  chown root:sdatagrp /sdata -v
-  # set gid
-  chmod g+s /sdata -v
-  # verify 
-  ll -d /sdata
+# add group sdatagrp 
+groupadd -g 9999 sdatagrp
+# add users
+usermod -G sdatagrp user100
+usermod -G sdatagrp user200
+# create directory
+mkdir /sdata
+# set ownership 
+chown root:sdatagrp /sdata -v
+# set gid
+chmod g+s /sdata -v
+# verify 
+ll -d /sdata
 ```
 
 The sticky bit is set on public writable directories. This protects file and sub-directories being deleted by other regular users. 
 
 ```bash
-  ll -d /tmp
-  # The bolded t in
-  drwxrwxrwt. 8 root root 172 Aug 28 08:18 /tmp
-  # set the sticky bit
-  chmod 1755 /var -v
-  # unset
-  chmod 755 /var
-  # see files with this set
-  find / -type d -perm -1000
+ll -d /tmp
+# The bolded t in
+drwxrwxrwt. 8 root root 172 Aug 28 08:18 /tmp
+# set the sticky bit
+chmod 1755 /var -v
+# unset
+chmod 755 /var
+# see files with this set
+find / -type d -perm -1000
 ```

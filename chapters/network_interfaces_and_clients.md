@@ -1,13 +1,13 @@
 # Administering Network Interfaces and Network Clients
 
 ```bash
-    # find the hostname in a number of different ways
-    $ hostname
-    $ hostnamectl | grep hostname
-    $ uname -n
-    $ cat /etc/hostname
-    # nmcli is a command line tool for controlling NetworkManager 
-    $ nmcli general hostname
+# find the hostname in a number of different ways
+hostname
+hostnamectl | grep hostname
+uname -n
+cat /etc/hostname
+# nmcli is a command line tool for controlling NetworkManager 
+nmcli general hostname
 ```
 
 An IP address is four dot-separated octets divided into a network portion and a node portion. Network addresses are classified into three classes (uninspiringly) A, B & C.

@@ -67,9 +67,11 @@ RHEL 7 had four command-line shells: bash, ksh, tcsh & zsh. We can change the de
 
 #### grep
 
-Linux has grep (global regular expression print) for when you fancy a bit of pattern matching. 
+Linux has grep (global regular expression print) for when you fancy a bit of pattern matching. Globbing helps match file names when searching of finding files.
 
 ```bash
+  # see the information for globbing
+  man 7 glob
   # grep follows the basic patter
   grep [OPTIONS] PATTERN [FILE...]
   # search for a pattern for the user in the file
@@ -129,6 +131,9 @@ There are three quoting mechanisms that disbable their special meanings which ar
   # renice a process in top
   # press r and enter process id followed by niceness value
   # kill process by precessing k followed by the process id
+  
+  # view the same in the UI
+  gnome-system-monitor
 ```
 
 ```bash
@@ -193,27 +198,27 @@ at -f ~/.executablescript.sh now + 2 hours
 Submit an at job:
 
 ```bash
-  at 11:30pm 1/6/20
-  at> find / -name core -exec rm {} \; & /tmp/core.out
-  # view list of jobs
-  ll /var/spool/at
-  # or view by name of job ID
-  at -c 1
-  # list jobs
-  at -l 
-  # remove job
-  atrm 1
+at 11:30pm 1/6/20
+at> find / -name core -exec rm {} \; & /tmp/core.out
+# view list of jobs
+ll /var/spool/at
+# or view by name of job ID
+at -c 1
+# list jobs
+at -l 
+# remove job
+atrm 1
 ```
 
 Add a command to issue a statement to the system log
 
 ```bash
-  at now +2 minutes
-  >at logger "The system uptime is $(uptime)"
-  # view the logs
-  tail -f /var/log/messages
-  # or 
-  journalctl -f 
+at now +2 minutes
+>at logger "The system uptime is $(uptime)"
+# view the logs
+tail -f /var/log/messages
+# or 
+journalctl -f 
 ```
 
 #### Crontab
@@ -272,5 +277,5 @@ journalctl _COMM=nslcd
 # create directory to persist logs 
 mkdir -p /var/log/journal 
 # restart journald
-systemscl restart systmed-journald
+systemctl restart systmed-journald
 ```

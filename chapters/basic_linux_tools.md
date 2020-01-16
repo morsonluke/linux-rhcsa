@@ -80,8 +80,10 @@ lastlog
 #### System Information
 
 ```bash
-# see basic info about the system
-uname
+# see basic info about the system & kernel
+uname -a
+# see DMI table contents
+dmidecode > /root/dmidecode.txt
 # view the hostname 
 hostnamectl
 # change hostname
@@ -173,4 +175,18 @@ shutdown +0
 init 0
 systemctl halt
 systemctl poweroff
+```
+
+#### Cockpit
+
+Cockpit is a web-based interface for administering servers.
+
+```bash
+sudo yum install cockpit cockpit-dashboard
+# allow connections if needed
+firewall-cmd --permanent --add-port=9090/tcp
+# enable cockpit
+systemctl enable cockpit.socket --now
+# navigate to the following URL in the browser
+localhost:9090
 ```
