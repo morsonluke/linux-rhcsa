@@ -137,3 +137,43 @@ mount /dev/database/sql /sql/
 ```bash
 vi /etc/fstab
 ```
+
+#### fstab & mtab files
+
+The default in RHEL is to use UUIDs to mount non-LVM filesystems. They can represent a partition, a logical volume, or a RAID array. We can verify how partitions are actually mounted ni the `/etc/mtab` file. 
+
+``` bash
+UUID=8ac075e3-1124-4bb6-bef7-a6811bf8b870 /                       xfs     defaults        0 0
+# mount something like a CD drive as removable media
+/dev/sr0 /cdrom auto ro,noauto,users 0 0
+```
+
+| Field Name | Description |
+| --- | --- |
+|  Device | Device to be mounted can be UUID or device path |
+| Mount Point | Directory to be mounted   |
+| Filesystem Format | xfs, ext2, msdos, nfs etc.  |
+| Mount Options | Various options, generally set to default |
+| Dump Value | Either 0 or 1. If the dump command is used to back up the fileystem, this field controls the filesystem to be dumped |
+|  Filesystem Check Order | Order in which they are checked by the `fsck` command |
+
+mtab virtual filesystems:
+
+* `tmpfs` - the virtual memory filesystem uses both RAM and swap space
+* `devpts` - pseudo-terminal devices
+* `sysfs` - dynamic information about system devices
+* `proc` - dynamically configurable options for changing the behaviour of the kernel
+* `cgroups` - control group feature of the Linux kernel, which allows you to set limits on the system resource usage for a process or a group of processes
+
+#### Automounter
+
+The automount daemon, or `autofs` can automatically mount a specific filesystem as needed. It can umnount a filesystem automatically after a fixed period of time. 
+
+```bash
+# install autofs
+yum install autofs
+systemctl start autofs
+systemctl enable autofs
+# list the configuration files
+ls -ltr /etc/auto*
+```

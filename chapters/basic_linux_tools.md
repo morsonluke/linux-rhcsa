@@ -119,6 +119,7 @@ gzip /root/anaconda-ks.cfg
 # unzip the file
 gunzip /root/anaconda-ks.cfg 
 # bzip2 & bunzip2 can also be used
+nohup find . -maxdepth 1 -type f -mtime +30 -iname "*[0-9]*" -exec gzip {} \; &
 ```
 
 Archiving tools include tar and star which have the ability to preserve general file attributes (ownership, group membership)

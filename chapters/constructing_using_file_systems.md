@@ -47,10 +47,12 @@ xfs_admin -l /dev/vda1
 Label a file system
 
 ```bash
-# xfs_admin -l /dev/sda1
-# umount /boot
-# xfs_admin -L bootfs /dev/sda1
-# mount /boot
+xfs_admin -l /dev/sda1
+umount /boot
+xfs_admin -L bootfs /dev/sda1
+mount /boot
+# if we wanted to check changes in the fstab file:
+mount -o remount,ro /boot
 ```
 
 #### Access Control Lists
