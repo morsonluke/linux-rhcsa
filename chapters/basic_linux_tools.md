@@ -148,6 +148,18 @@ The star command is an enhanced version of tar.
 star cvf /tmp/etc.tar -xattr -H=exustar /etc
 ```
 
+Copy files from another server:
+
+```bash
+# tar files 
+sudo tar cvzf ~luke.morson/kafka01.tar.gz $(ls -1)
+# check contents
+tar tvf kafka01.tar.gz
+# chown ownership
+sudo chown luke.morson:
+scp kafka01:/home/luke.morson ~/Desktop/kafka01
+```
+
 #### vi
 
 The vi editor is a text editing tool that allows you to create and modify text files. There's a multitude of options with vi to explore.
