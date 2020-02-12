@@ -151,3 +151,22 @@ ll -Z /etc/passwd
 # change to permissive
 setenforce permissive
 ```
+
+#### GPG2
+
+The computer standard for file encryption and signature services is known as **Pretty Good Privay** (PGP). The open-sourc version is GNU Privacy Guard  (GPG). The RHEL7 version is GPG2. 
+
+GPG2 has three cryptographic mechanism that are all public/private key mechanis: RSA, DSA, ElGamal
+
+
+```bash
+# there was an issue with no "entropy" being create on the VM so to allow for keys to be created
+sudo yum install rng-tools
+sudo rngd -r /dev/urandom
+# generate a key and work through the prompts
+gpg --gen-key
+# list the keys
+gpg --list-keys
+# export the key
+gpg --export First Last > gpg.pub
+```
