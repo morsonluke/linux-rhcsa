@@ -31,9 +31,13 @@ cat /etc/sysconfig/network-scripts/ifcfg-eth0
 
 The ping command send out 64-byte Internet Control Message Protocol test packets.
 
-```
+```bash
 # send two packets to google 
 ping -c2 8.8.8.8
+# install traceroute
+sudo yum install traceroute
+# see route path to the destination and show the IP address
+traceroute -n server2
 ```
 
 A network protocol called ARP maps the Ethernet address to the destination node's IP address.
@@ -56,13 +60,54 @@ A number of commands are available to administer network interfaces.
 
 The ip command has replaced a number of now obslete commands from RHEL 7;
 
-| Obselete | Equivalent |
+| Obselete | Equivalent | Description |
 | -- | --- | --- |
-| ifconfig | ip [-s] link,  ip addr | 
-| ifconfig eth0 192.168.122.150 netmask 255.255.255.0 | ip addr add 192.168.122.150/24 dev eth0 |
-| arp | ip neigh | 
-| route, netstart -r | ip route |
-| netstat -tuplpa | ss -tupna |
+| ifconfig | ip [-s] link,  ip addr | Shows the link status and IP address information for all network interfaces |
+| ifconfig eth0 192.168.122.150 netmask 255.255.255.0 | ip addr add 192.168.122.150/24 dev eth0 | Assigns an IP address and netmarks to the eth0 interface | 
+| arp | ip neigh | Shows the ARP table |
+| route, netstart -r | ip route | Displays the routing table |
+| netstat -tuplpa | ss -tupna | Shows all listening and non-listening sockets along with the program to which they belong | 
+
+```bash
+# assign IP address information 
+ip addr add 192.168.122.100/24 dev eth0
+# remove all IP addresses from specified interface
+ip addr flush dev eth0
+# display routing table
+ip -r route
+# display network conncetions
+ss -tuna4
+```
+
+The Address Resolution Protocol (ARP) associates the hardware address of a network interface (MAC) with an IP address. The `ip neigh` command displays a table of hardware and IP addresses on the local computer.
+
+#### Network Config
+
+```bash
+# display current status of the network devices
+nmcli dev status
+# display configured conections
+nmcli con show
+# if you cause any issues one options is tor estart network with the current configuration files
+systemctl restart newtwork
+# view the configuration file list
+/etc/sysconfig/network-scripts
+```
+
+Configure a network card:
+
+```bash
+# backp the configuration  
+cp /etc/sysconfig/network-scripts/ifcfg-eth0 /tmp/
+sudo nmtui
+# edit the configuration as required
+# deactivate and then reactivate
+sudo ifdown eth0
+sudo ifup eth0
+# see the changes
+ip addr show eth0
+ip route
+```
 
 #### NTP Client
 

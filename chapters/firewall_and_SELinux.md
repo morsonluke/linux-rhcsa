@@ -158,7 +158,6 @@ The computer standard for file encryption and signature services is known as **P
 
 GPG2 has three cryptographic mechanism that are all public/private key mechanis: RSA, DSA, ElGamal
 
-
 ```bash
 # there was an issue with no "entropy" being create on the VM so to allow for keys to be created
 sudo yum install rng-tools
@@ -169,4 +168,4 @@ gpg --gen-key
 gpg --list-keys
 # export the key
 gpg --export First Last > gpg.pub
-```
+``` 
