@@ -21,3 +21,4 @@
 | `$` | Go to the end of the line | 
 | `H` | Move to the top of the window | 
 | `L` | Move to the bottom of the window | 
+| `yy` FOLLOWED BY `P` | Copy the line, move the cursor then insert below the cursor | 
