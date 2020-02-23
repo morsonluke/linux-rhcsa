@@ -131,3 +131,17 @@ dnf list installed
 # search pacakges
 dnf search httpd
 ```
+
+#### AppStream
+
+* AppStream contains additional user space apps, runtime languages etc. 
+*  Software is available in both RPM and module formats
+
+```bash
+# see the modules
+yum modules list
+# enable a different stream
+yum module enable postgresql:9.6
+# install 
+yum install postgresql
+```

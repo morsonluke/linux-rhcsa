@@ -161,6 +161,8 @@ A process is spawned at a certain priority established by a numerical value call
   nice -2 top
   # modify a currently running process
   renice 5 1919
+  # renice another process
+  nice -n 5 cat /dev/urandom > /dev/null & 
 ```
 
 ```bash
@@ -274,8 +276,22 @@ journalctl --since yesterday
 journalctl _UID=1001
 # see entries related to nslc daemon
 journalctl _COMM=nslcd
+```
+
+Enabling persistent journals:
+
+```bash
 # create directory to persist logs 
 mkdir -p /var/log/journal 
 # restart journald
 systemctl restart systmed-journald
+```
+
+#### Managin Process Schedulers
+
+```bash
+# view a current processes settings
+chrt -p {PID}
+# make a process run FIFO
+chrt -f -p <PRIO> <PID>
 ```

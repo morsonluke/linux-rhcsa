@@ -177,3 +177,41 @@ systemctl enable autofs
 # list the configuration files
 ls -ltr /etc/auto*
 ```
+
+#### Disk Compression (Virtual Disk Optimizer)
+
+* VDO is a method of providingdeduplication, compression, and thin provisioning
+* VDO is applied to a block device and then you do normal disk operations to that VDO device
+
+```bash
+yum install vdo kmod-kvdo
+# install and ensure it start after reboot
+systemctl start vdo.service && systemctl enable vdo
+# creaet a VDO volume
+vdo create --name=NAME --device/dev/device --vdoLogicalSiz=SIZE --sparseIndex=enabled --vdoSlabSize=32G
+# create filesystetm
+mkfs.xfs -K /dev/mapper/NAME
+# make sure the system registers the new device node
+udevadm settle
+# mount
+mount /dev/mapper/NAME /mount/point
+# see the stats
+vdostats --human-readable
+```
+
+Labs exercise: 
+
+```bash
+# ensure a dense index deduplication
+sudo vdo create --name=Containerstorage --device=/dev/nvme1n1
+ --vdoLogicalSize=100G --sparseIndex=disabled
+ # ensure deduplication is disabled
+vdo create --name=WebsiteStorage --device=/dev/nvme2n1 --vdoLogicalS
+ize=60G --deduplication=disabled
+ # setup  filesystem
+mkfs.xfs -K /dev/mapper/Containerstorage && udevadm settle
+# create mount point and mount 
+mount /dev/mapper/Containerstorage /mnt/containers/
+# add to /etc/fstab
+/dev/mapper/ContainerStorage /mnt/containers xfs defaults,_netdev,x-systemd.device-timeout=0,x-systemd.requires=vdo.service 0 0
+```

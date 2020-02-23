@@ -25,7 +25,7 @@ cat /etc/services | less
 cat /etc/sysconfig/network-scripts/ifcfg-eth0
 ```
 
-* The  `/etc/nsswitch.conf` file specifies the database search priorities for "everything"
+* The `/etc/nsswitch.conf` file specifies the database search priorities for "everything"
 * The `/etc/hosts` file can be used for small internal networks for hostname to IP resolution. DNS is used for larger networks
 * `/etc/resolv.conf` is the standard file for documenting the location of DNS servers
 

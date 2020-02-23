@@ -2,7 +2,6 @@
 
 Notes for RHCSA EX200 exam. Notes from:
 
-
 | Title | Authors |
 | --- | --- |
 | RHCSA/RHCE Red Hat Linux Certification Study Guide | Michael Jang & Alessandro Orsaria |
@@ -10,6 +9,7 @@ Notes for RHCSA EX200 exam. Notes from:
 | Operating Systems 4th Edition | Andrew S. Tanenbaum & Herbert Bos |
 | Udemy: "Prepare RHCSA Exams with Real Exam Practice Test" | Sanjaya Regmi |
 | How Linux Works | Briand Ward |
+| Red Hat Certified System Administrator (EX200) - RHCSA Exam Prep | Linux Academy | 
 
 These are my personal notes written while learning, so most of the content is copied from the books.
 
@@ -42,9 +42,11 @@ These are my personal notes written while learning, so most of the content is co
 * 22: [Managing MariaDB](chapters/mariadb.md)
 
 #### General Linux
+
 * [Processes and Threads](chapters/processes_and_threads.md)
 
 #### Networking
+
 * [VMWare Fusion Networking](networking/vmware.md)
 
 #### Cheatsheets
