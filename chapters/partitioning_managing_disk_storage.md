@@ -61,7 +61,8 @@ fdisk /dev/nvme0n1
 # select m to show help list and create a new partition
 # see the partition table
 Command (m for help): p
-# create a partion and enter the defaults
+# create a partion and enter the defaults making a 500MiB size partition 
+Last sector, +sectors or +size{K,M,G} (2048-2097151, default 2097151): +500M
 ```
 
 * Mounting a partition makes its storage available starting at the specified directory
@@ -96,46 +97,52 @@ lvmdiskscan
 
 #### Creating a Logical Volume
 
-1. Create paritions of type Linux LVM
-
 ```bash
 # create a partition
 fdisk /dev/sdb
 # change the partition type using fdisk (8e)
 fdisk -l /dev/sdb
-inform OS of partition table change
+# inform OS of partition table change
 partprobe /dev/sdb
 ```
 
-2. Create a physical volume using `pvcreate`
-
 ```bash
+ #Create a physical volume using `pvcreate`
 pvcreate /dev/sdb1
 # see information about physical volumes
 pvs
+pvdisplay
 ```
 
-3. Create volume group using the physical volumes with `vgcreate`
-
 ```bash
+# Create volume group using the physical volumes
 vgcreate database /dev/sdb1
+# see information about volume groups
+vgs
+vgdisplay
 ```
 
-4. Create logical volumes using lvcreate
-
 ```bash
+# Create logical volumes using lvcreate
 lvcreate -L 1G -n sql database
 # list the logical volumes
 lvs
+lvdisplay
 # make filesystem
 mkfs.xfs /dev/database/sql
 mount /dev/database/sql /sql/
 ```
-
-5. Update the UUID of logical volumne name in `/etc/fstab` to set permanetly 
-
+ 
 ```bash
+# check for UUID
+blkid
+# Update the UUID of logical volumne name in `/etc/fstab` to set permanetly
 vi /etc/fstab
+UUID=8ac075e3-1124-4bb6-bef7-a6811bf8b870 /mnt/sdb1 xfs defaults 0 0
+# check mounted correctly
+umount /dev/sdb1
+# check /etc/fstab file is correct
+mount -a
 ```
 
 #### fstab & mtab files
@@ -155,7 +162,7 @@ UUID=8ac075e3-1124-4bb6-bef7-a6811bf8b870 /                       xfs     defaul
 | Filesystem Format | xfs, ext2, msdos, nfs etc.  |
 | Mount Options | Various options, generally set to default |
 | Dump Value | Either 0 or 1. If the dump command is used to back up the fileystem, this field controls the filesystem to be dumped |
-|  Filesystem Check Order | Order in which they are checked by the `fsck` command |
+|  Filesystem Check Order | Order in which they are checked by the `fsck` command | 
 
 mtab virtual filesystems:
 
