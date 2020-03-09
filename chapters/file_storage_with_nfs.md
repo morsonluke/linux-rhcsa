@@ -13,16 +13,28 @@ NFS uses the Remote Procedure Call (RPC) and eXternal Data Representation (XDR) 
 
 #### /etc/exports
 
-The /etc/exports file defines the configuration for NFS shares. 
+The /etc/exports file defines the configuration for NFS shares. NFS security can be enhanced in a number of ways:
+* A properly configured firewall
+* TCP wrappers
+* SELinux
+* Kerberos authentication and encryption
+
+#### Basic NFS Installation 
+
+```bash
+# install all packages including Samba, CIFS, and iSCSI
+yum group install "File and Storage Server"
+# we can just instill requirements for NFS
+yum -y install nfs-utils
+```
 
 #### Export Shares to NFS Clients 
 
 ```bash
-yum -y install nfs-utils
 mkdir /common/nfsrhcsa
 setsebool -P  nfs_export_all_ro=1 nfs_export_all_rw=1
 # confirm settings 
-getsebool  -a | grep nfs_export
+getsebool -a | grep nfs_export
 # add NFS service persistently to the firewalld config 
 firewall-cmd --permanent --add-service nfs ; firewall-cmd --reload 
 # set rpcbin and NFS to autostart
