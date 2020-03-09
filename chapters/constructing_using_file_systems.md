@@ -65,3 +65,14 @@ mount -o remount,ro /boot
 # see the ACLs for the file 
 getfacl anaconda-ks.cfg
 ```
+
+Prevent a user from accessing a file:
+
+```bash
+setfacl -m u:acl_user:- /etc/sysconfig/network-scripts/ifcfg-lo
+# see the changes on the file 
+getfacl /etc/sysconfig/network-scripts/ifcfg-lo
+# to revet the changes
+setfacl -b /etc/sysconfig/network-scripts/ifcfg-lo
+````
+

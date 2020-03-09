@@ -1,7 +1,7 @@
 # Controlling Access through Firewall and SELinux
 
 * A firewall is a protective layer that is configured between private and a public network to segregate traffic. It enables users to control network traffic on host machines by defining a set of firewall rules
-* RHEL comes with a host-based packet-filtering firewall software called iptables that communicates with the netfilter module in the kernel for policing the flow of data packets
+* RHEL comes with a host-based packet-filtering firewall software called `iptables` that communicates with the netfilter module in the kernel for policing the flow of data packets
 
 ####  iptables and firewalld
 

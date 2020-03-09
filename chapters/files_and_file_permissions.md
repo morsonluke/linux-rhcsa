@@ -110,6 +110,8 @@ There are two commands lsattr and chattr that are used for attribute management.
 ```bash
 # see the current attributes for a file
 lsattr file1
+# see if we can find out what flag appends
+man chattr | grep append
 # update attribues of a file
 chattr +a file1
 # try to copy content of another file to it
@@ -177,7 +179,7 @@ Permission classes are user, group and public. Permission types are read, write 
 | Group (g) | A set of users that have identical access on files and directories that they share |
 | Others (o) | All others users - public | 
 
-`chmod` can modify permissions using either **symbolic** or **octal** notation. In the three 3-digit octl numbering we have X-X-X with the corresponding weights  4-2-1.
+`chmod` can modify permissions using either **symbolic** or **octal** notation. In the three 3-digit octl numbering we have X-X-X with the corresponding weights `4-2-1`.
 
 ```bash
 # add execute permission for the owner

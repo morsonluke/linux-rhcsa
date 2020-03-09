@@ -22,6 +22,10 @@ vigr -s
 #### Users
 
 ```bash
+# see my user details
+id
+# see details for a user
+getent passwd cloud_user
 # see default values for useradd command
 useradd -Dte
 # add a test user
@@ -30,6 +34,21 @@ useradd testuser sh
 cd /etc; grep testuser passwd shadow group gshadow
 # modify users GECOS
 usermod -c newvalue testuser
+# see inactivity or expire here
+vi /etc/default/useradd
+```
+
+```yaml
+# useradd defaults file
+GROUP=100
+HOME=/home
+INACTIVE=-1
+EXPIRE=
+SHELL=/bin/bash
+SKEL=/etc/skel
+CREATE_MAIL_SPOOL=yes
+INACTIVE=3
+EXPIRE=2020-01-01
 ```
 
 Create a user with no login access
@@ -45,7 +64,7 @@ cd /etc ; grep user4 passwd
 passwd -n 7 -x 28 -w 5 testuser
 ```
 
-Set up password aging on user accounts
+Set up password aging on user accounts:
 
 ```bash
 # add password aging
@@ -78,6 +97,16 @@ We can see in AWS how it is automatically created for the `centos` user:
 # User rules for centos
 centos ALL=(ALL) NOPASSWD:ALL
 ```
+
+We can see the files that are added to a users home directory when created:
+
+```bash
+ls -la /etc/skel
+# see the defaults for user
+view /etc/login.defs
+```
+
+Although not a requirement we can enforce password quality checking using `pam_pwquality`
 
 #### Groups
 
