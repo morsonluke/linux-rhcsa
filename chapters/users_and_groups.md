@@ -1,8 +1,6 @@
 # Managing Users and Groups
 
-RHEL supports three fundamental user account types: root, normal and service.
-
-User account information for local users is stored in the `/etc` directory in `passwd, shadow, group and gshadow`.
+RHEL supports three fundamental user account types: root, normal and service. User account information for local users is stored in the `/etc` directory in `passwd, shadow, group and gshadow`.
 
 ```bash
 # check for inconsistencies in passwd and shadow files
@@ -36,6 +34,8 @@ cd /etc; grep testuser passwd shadow group gshadow
 usermod -c newvalue testuser
 # see inactivity or expire here
 vi /etc/default/useradd
+# lock a user
+usermod -L dprince -e 1
 ```
 
 ```yaml
@@ -110,15 +110,21 @@ Although not a requirement we can enforce password quality checking using `pam_p
 
 #### Groups
 
+A user can have a single primary group, but any number of supplementary groups. 
+
 ```bash
 # add a group
 groupadd -g 5000 linuxadmins
 # add another group sharing the GID of the same group
 groupadd -o -g 5000 sales
-# addl user1 to linuxadmins
+# add user1 to linuxadmins
 usermod -a -G linuxadmins user1
+# change the primary group
+usermod -g wheel user1
 # see groups
 groups user1
+# change group information 
+groupmod
 ```
 
 #### Doing a bit of sudoing

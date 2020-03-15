@@ -1,19 +1,19 @@
 # Sharing File Storage with NFS
 
-The Network File System allows the sharing of file between systems over the network. It lets a directory or file systems on one system to be mounted and used remotely on another system. The remote system that makes it shares available for network access is referred to as an NFS server. 
+The Network File System allows the sharing of file between systems over the network. It allows a directory or file systems on one system to be mounted and used remotely on another system. The remote system that makes it shares available for network access is referred to as an NFS server. 
 
 NFS uses the Remote Procedure Call (RPC) and eXternal Data Representation (XDR) mechanism that allows a server and client to communicate with each other. 
 
 | Daemon | Description | 
 | --- | --- |
 | nfsd | NFS server process responds to client request on TCP port 2049   |
-| rpcbind    |  Server/client - converts RPC program numbers into universal addresses   |
-| rpc_rquotad   |  Server/client - displays user quota information for remotely mounted shares   |
-| rpc_idmapd    |  Server/client - controls the mapping of UIDs and GIDs with corresponding username and groupnames based on config in /etc/idmapd.confile |
+| rpcbind |  Server/client - converts RPC program numbers into universal addresses   |
+| rpc_rquotad |  Server/client - displays user quota information for remotely mounted shares   |
+| rpc_idmapd |  Server/client - controls the mapping of UIDs and GIDs with corresponding username and groupnames based on config in /etc/idmapd.confile |
 
 #### /etc/exports
 
-The /etc/exports file defines the configuration for NFS shares. NFS security can be enhanced in a number of ways:
+The `/etc/exports` file defines the configuration for NFS shares. NFS security can be enhanced in a number of ways:
 * A properly configured firewall
 * TCP wrappers
 * SELinux
@@ -64,4 +64,45 @@ systemctl start rpcbind
 systemcrl status rpcbind
 vi /etc/fstb
 server1.example.local:/common  /nfsrhcemnt nfs  _netdev,rw  0 0 
+```
+
+#### Setup a Samba Share and NFS Share
+
+```bash
+# install Samba packages
+yum install samba -y
+# edit smb.conf
+vi /etc/samba/smb.conf
+```
+
+Add the following:
+
+```
+[share]
+browsable = yes
+path = /smb
+writable = yes
+```
+
+```bash
+# check an smb.conf configuration file for internal correctness
+testparm
+# create a user on the server
+useradd shareuser
+smbpasswd -a shareuser
+# create the /smb path 
+mkdir /smb & chmod 777 /smb
+#  start the samba damon
+systemctl start smb
+# enable as all changes must survive a restart
+systemctl enable smb
+```
+
+Setup the Samba Client on another instance
+
+```bash
+# The cifs-utils provides a means for mounting SMB/CIFS shares on a Linux system
+yum install cifs-utils -y
+# make mount poubt
+mkdir /mnt/smb
 ```
