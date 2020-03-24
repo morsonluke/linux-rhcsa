@@ -1,4 +1,4 @@
-# Network Interface Tools
+# High Level Network Interface Tools
 
 |  Concept | Description |
 | --- | --- |
@@ -31,3 +31,27 @@ routel
 * Static routes can be used for connections that can't or shouldn't use the default gateway
 * Border Gateway Protocol is routing protocol used to route traffic across the internet. It is a layer 4 protocol sitting on top of TCP
 * An ASN is required to implement BGP peering. This is a special number assigned by IANA for use primarily with BGP that identifies each network on the internet
+
+#### ARP
+
+* Address Resolution Protocol is used for discovering the MAC address associated with a given network layer address (IP address)
+* It is necessary to map Layer 3 (IP) addressing to Layer2 (MAC) addressing
+
+```bash
+# view the arp list
+ip n
+```
+
+#### DNS
+
+* DNS is a Layer 7 protocol used for discovering the IP address associated with a given domain name
+
+A basic query: 
+* A FDQN (fully qualified domain name) is the complete domain name for a specific host on the network
+* When a computer wants to initiate a connection to an FQDN it needs to know where the host is on the network
+* The computer will send a query to the DNS server, seeking to resolve the FQDN to an IP address, and then looks at the routing tables to determine where to send the request
+
+```bash
+# DNS lookup
+dig www.google.com + trace
+```
