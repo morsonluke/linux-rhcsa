@@ -55,3 +55,9 @@ A basic query:
 # DNS lookup
 dig www.google.com + trace
 ```
+
+#### VPN
+
+* A VPN connection is an extension of a private network, using the IP  connectivity of the internet to connect remote clients to remote sites in an encrypted private connection
+* Tunneling permits the encapsulation of one type of protocol packing within the  datagram of a different protocol, for instance, sending TCP/IP traffic over the internet
+* For PPTP and Layer Two Tunneling Protocol (L2TP), a tunnel is similar to a session
