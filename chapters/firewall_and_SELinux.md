@@ -1,7 +1,8 @@
 # Controlling Access through Firewall and SELinux
 
 * A firewall is a protective layer that is configured between private and a public network to segregate traffic. It enables users to control network traffic on host machines by defining a set of firewall rules
-* RHEL comes with a host-based packet-filtering firewall software called `iptables` that communicates with the netfilter module in the kernel for policing the flow of data packets
+* RHEL comes with a host-based packet-filtering firewall software called `iptables` that communicates with the `netfilter` module in the kernel for policing the flow of data packets
+* netfilter is a set of hooks inside the Linux kernel that allows the kernel modules to register callback functions with the network stack. A registered callback function is then called back for every packet that traverses the respective hook within the network stack
 
 ####  iptables and firewalld
 
@@ -122,6 +123,21 @@ firewall-cmd --list-ports
 firewall-cmd --permanent --add-masquerade
 # add rule
 firewall-cmd --permanent --add-forward-port=port=5555:proto=tcp:toport=80
+```
+
+Audit access from a client/server on port 80:
+
+```bash
+# check the status of iptables
+systemctl status iptables
+# verify the host is listening on port 80
+ss -lntp | grep :80
+# check connection from the client 
+curl 10.0.1.10
+# allow access from the client
+iptables -I INPUT -p tcp -s 10.0.1.11 --dport 80 -j ACCEPT
+# save the settings
+service iptables save
 ```
 
 #### SELinux

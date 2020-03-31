@@ -11,7 +11,7 @@ Notes for RHCSA EX200 exam. Notes from:
 | How Linux Works | Briand Ward |
 | Red Hat Certified System Administrator (EX200) - RHCSA Exam Prep | Linux Academy | 
 
-These are my personal notes written while learning, so most of the content is copied from the books.
+*** 
 
 #### RHCSA
 
@@ -46,6 +46,12 @@ These are my personal notes written while learning, so most of the content is co
 * [Processes and Threads](chapters/processes_and_threads.md)
 
 #### Networking
+
+Networking and Troubleshooting:
+* [General Concepts][networking/networking_and_troubleshooting/general.md]
+* [Network Interfaces][networking/networking_and_troubleshooting/network_interface.md]
+
+Other: 
 
 * [VMWare Fusion Networking](networking/vmware.md)
 

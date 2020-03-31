@@ -2,7 +2,7 @@
 
 Shell scripts are text files that contain Linux commands and control structures for the automation of tasks. 
 
-An example shell script based on `/etc/cron.daily/logrotate with some comments: 
+An example shell script based on `/etc/cron.daily/logrotate` with some comments: 
 
 ```bash
 # the first line of a shell script starts with a "sheband" `#! /bin/sh`. On RHEL this is symbolically linked to `/bin/bash`
