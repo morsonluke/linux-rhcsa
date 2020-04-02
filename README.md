@@ -48,7 +48,7 @@ Notes for RHCSA EX200 exam. Notes from:
 #### Networking
 
 Networking and Troubleshooting:
-* [General Concepts](networking/networking_and_troubleshooting/general.m)
+* [General Concepts](networking/networking_and_troubleshooting/general.md)
 * [Network Interfaces](networking/networking_and_troubleshooting/network_interface.md)
 
 Other: 
