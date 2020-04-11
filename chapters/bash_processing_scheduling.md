@@ -40,9 +40,19 @@ The default locations for input, output and error are stdin, sdout and stderr. T
   ll /usr /cdr > ~/dir.out 2>&1
   # send outpout to input of another command
   head /proc/cpuinfo | tr a-z A-Z
-  # channel a file to a program's standard input
+  # input redirection of a file to a program's standard input
   head < /proc/cpuinfo
-  # redirect output from dmesg to less 
+  # combine both input and output redirection 
+  sort < listing > sorted_list
+```
+
+Pipes are used to the output of one command and feed it to another:
+
+```bash 
+  # pass output to less
+  ls -ls | less
+  # count number of files
+  ls -l | wc -l
 ```
 
 ```bash

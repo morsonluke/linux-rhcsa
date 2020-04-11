@@ -185,3 +185,8 @@ gpg --list-keys
 # export the key
 gpg --export First Last > gpg.pub
 ``` 
+We can also simply encrypt a file:
+
+```bash
+gpg --yes --batch --passphrase=pssphrase --cipher-algo AES256 -c gpg.json
+```

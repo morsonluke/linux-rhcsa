@@ -111,7 +111,7 @@ diff /etc/passwd /root/passwd1
 
 #### Compression Tools
 
-Compression tools are used to save space
+Compression tools are used to save space, encoding the information in fewer bit than the original information.
 
 ```bash
 # gzip creates a compressed file of each of the files
@@ -119,10 +119,21 @@ gzip /root/anaconda-ks.cfg
 # unzip the file
 gunzip /root/anaconda-ks.cfg 
 # bzip2 & bunzip2 can also be used
+bzip2 file.things
+# combine find to compress files
 nohup find . -maxdepth 1 -type f -mtime +30 -iname "*[0-9]*" -exec gzip {} \; &
 ```
 
-Archiving tools include tar and star which have the ability to preserve general file attributes (ownership, group membership)
+Zip is another format for archiva/compression. Mostly used for files that need to be managed on windows/Linux. 
+
+```bash
+zip -r archivenamne /home
+unzip archivename
+```
+
+An archive is a file that is a collection of a number of files/directories that can be sorted easiers than its components.
+
+Archiving tools include tar and star which have the ability to preserve general file attributes (ownership, group membership). Tar stands for an was originally used for "Tape Archive".
 
 ```bash
 # Create a tarball of the entire /home directory
