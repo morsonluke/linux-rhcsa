@@ -190,6 +190,13 @@ A process is spawned at a certain priority established by a numerical value call
 
 The five process states are running, sleeping, waiting, stopped and zombie.
 
+Kill signals are inter process communications. There are 64 of them which can be viewed with `kill -l`
+
+* `SIGTERM` - ask the process to exit cleanly
+* `SIGKILL` - stop the process immediately - prevents cleanup
+* `SIGHUP` - signal hangup. Stop processes in a shell environment, can make some services re-read configuration files
+* `SIGINT` - Same thing as Ctrl + C
+
 ##### Scheduling
 
 Job scheduling is a feature that allows a user to submit a command or program for execution at a certain time. 
@@ -265,7 +272,7 @@ The `/etc/crontab` file specifies the syntax that each cron job must comply with
 
 #### Log File Analysis
 
-* RHEL 7 comes with two logging systems: `rsyslog` and an enhanced logging daemon called `ststemd-journal`
+* RHEL 7 comes with two logging systems: `rsyslog` and an enhanced logging daemon called `systemd-journal`
 * What is logged can be configured in `/etc/rsyslog.conf`. In descending order the log priorities are debug, info, notice, warn, err, crit, alert, emerg
 * Logs rotation is defined in `/etc/logrotate.conf`
 
@@ -294,7 +301,7 @@ Enabling persistent journals:
 # create directory to persist logs 
 mkdir -p /var/log/journal 
 # restart journald
-systemctl restart systmed-journald
+systemctl restart systemd-journald
 ```
 
 #### Managin Process Schedulers

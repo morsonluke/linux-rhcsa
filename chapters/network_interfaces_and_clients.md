@@ -136,16 +136,16 @@ Benefits include: uniform information, centralized storage for information and u
 * The relative distinguished names represent individual componenets of a DN
 * We have the option of choosing between auth services: Syste Security Services Daemon (SSSD) and Name Service Local Cachine Daemon (NSLCD)
 
-LDAP client configuration can be done using the authconfig command. "
+LDAP client configuration can be done using the authconfig command.
 
 ```bash
   # install dependencies
-  yum -y install openldap openldap-clients nss-pam-ldapd sssd authconfig
+  yum install nss-pam-ldapd pam_krb5 autofs nfs-utils openldap-clients
   # attempt setup
-  authconfig --enableldap  --enableldapauth --ldapserver=ldap://labipa.example.local --enablesssd --ldapbasedn="dc=example,dc=local" --updatex
+  authconfig --enableldap --enableldapauth --enablemkhomedir --enableldaptls --ldaploadcacert=http://ldap.linuxacademy.com/pub/cert.pem --ldapserver=ldap.linuxacademy.com --ldapbasedn="dc=linuxacademy,dc=com" --update
   # enable services
   systemctl enable sssd
   systemctl start sssd
   # check id of user
-  id lisa
+  id ldapuser3
 ```

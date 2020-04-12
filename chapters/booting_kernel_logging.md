@@ -7,7 +7,7 @@ The boot process on an x86 computer can be split into 4 main phases: Firmware ph
 * The firmware is the BIOS or the UEFI code that is stored in flash memory on the x86 system board. The first thing that it does is run the power-on-self-test (POST) to detect, test and initialize the system hardware components
 * When it discovers a boot device, it loads GRUB2 (GRand Unified Bootloader) into memory and passes control over to it
 * GRUB2 is loaded into memory and takes control, it searches for the kernel in `/boot` file system
-* The configuration can be seen in `/boot/grub2/grub.cfg` 
+* The configuration can be seen in `/boot/grub2/grub.cfg`
 
 #### Managing GRUB
 
@@ -60,6 +60,17 @@ yum install grub2-tools
 # attempt to re-created the grub.cfg file
 grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
 # 
+```
+
+#### Modify GRUB Boot Order
+
+```bash
+# see what GRUB is botting into
+grubby --default-index
+# see details
+grubby --info=ALL
+# set default kernel to 1
+grubby --set-default-index=1
 ```
 
 #### Resetting the Root User Password

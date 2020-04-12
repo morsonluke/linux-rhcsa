@@ -147,7 +147,7 @@ Each file has associated metadata which is called the file's *inode*. The inode 
 
 A soft link or symlink allows one file to be associated with another.
 
-Hard links associate files with a single inode number making all files undistinguishable.
+Hard links associate files with a single inode number making all files undistinguishable. Hard links cannot cross filesystems. 
 
 ```bash
 # create a soft link for the newfile in the home directory
@@ -231,9 +231,9 @@ fi
 
 | Special Permission | On an Executable | On a Directory |
 | --- | --- | --- |
-| SUID | When the file is executed, the effective user ID of the process is that of the file | No effect | 
-| SGID | When the file is executed, the effective group ID of the processes is that of the file | Gives files created in the directory of the same group ownership as that of the directory |
-| Sticky bit | No effect | Files in the directory can be renamed of removed only by their owners |
+| SUID | When the file is executed, the effective user ID of the process is that of the file. Looks like `-rws------`| No effect | 
+| SGID | When the file is executed, the effective group ID of the processes is that of the file. Looks like `--x--s--x`| Gives files created in the directory of the same group ownership as that of the directory |
+| Sticky bit | No effect | Files in the directory can be renamed of removed only by their owners. Looks like `drwxrwxwrt` |
 
 setuid is set on executable files at the owner level. With this bit set, the file is executed by other regular users with the same priviledges at that of the owner. 
 
@@ -275,7 +275,8 @@ chmod g+s /sdata -v
 ll -d /sdata
 ```
 
-The sticky bit is set on public writable directories. This protects file and sub-directories being deleted by other regular users. 
+* The sticky bit is set on public writable directories. This protects file and sub-directories being deleted by other regular users
+* It is useful for shared directories such as `/var/tmp` and `/tmp` because users can create files, read and excute but can't remove files
 
 ```bash
 ll -d /tmp

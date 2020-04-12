@@ -164,6 +164,8 @@ virsh undefine server1.example.com --remove--all-storage
 ```bash
 # virsh starts a front end to existing KVM VMs
 (virst #) list 
+# get a list of all installed virtual machines
+virsh list --all
 # start a VM
 virsh start server1.example.com
 # shutdown a VM
