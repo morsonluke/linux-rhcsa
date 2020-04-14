@@ -10,13 +10,13 @@ Quick Emulator (QEMU) then uses the physical-to-virtual CPU mappings provided by
 
 | Package | Description |
 | ---     |       ---   | 
-| `qemu-kvm` |  The main KVM packages      |
-| `libvirt` |  Service to manage hypervisors   |
+| `qemu-kvm` | The main KVM packages |
+| `libvirt` | Service to manage hypervisors |
 | `libvirt-client` | virsh command and clients APIs to manage VMs |
-| `virt-install` | CLI tools for creating VMs   |
+| `virt-install` | CLI tools for creating VMs |
 | `virt-manager` | GUI VM admin tool |
-| `virt-top` | Display virtualization statistics   |
-| `virt-viewer` | Graphical console to connect to VMs  |
+| `virt-top` | Display virtualization statistics |
+| `virt-viewer` | Graphical console to connect to VMs |
 
 To enable virtualization in VMWare on a host:
 * System Settings -> Processors & Memory -> "Enable hypervisor application in this virtual machine"

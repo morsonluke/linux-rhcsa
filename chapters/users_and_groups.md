@@ -36,6 +36,15 @@ usermod -c newvalue testuser
 vi /etc/default/useradd
 # lock a user
 usermod -L dprince -e 1
+passwd -l testuser
+# expire the user account
+chage -E0 testuser
+# change the shell 
+usermod -s /sbin/nologin [username]
+# check the users shell has been changed
+sudo grep ^user /etc/passwd
+# move the users ssh keys for good measure
+mv /home/user/.ssh /home/user/nosshlogin
 ```
 
 ```yaml

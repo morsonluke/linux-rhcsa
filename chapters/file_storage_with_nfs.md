@@ -6,10 +6,10 @@ NFS uses the Remote Procedure Call (RPC) and eXternal Data Representation (XDR) 
 
 | Daemon | Description | 
 | --- | --- |
-| nfsd | NFS server process responds to client request on TCP port 2049   |
-| rpcbind |  Server/client - converts RPC program numbers into universal addresses   |
-| rpc_rquotad |  Server/client - displays user quota information for remotely mounted shares   |
-| rpc_idmapd |  Server/client - controls the mapping of UIDs and GIDs with corresponding username and groupnames based on config in /etc/idmapd.confile |
+| `nfsd` | NFS server process responds to client request on TCP port 2049   |
+| `rpcbind` |  Server/client - converts RPC program numbers into universal addresses   |
+| `rpc_rquotad` |  Server/client - displays user quota information for remotely mounted shares   |
+| `rpc_idmapd` |  Server/client - controls the mapping of UIDs and GIDs with corresponding username and groupnames based on config in /etc/idmapd.confile |
 
 #### /etc/exports
 
@@ -68,6 +68,10 @@ server1.example.local:/common  /nfsrhcemnt nfs  _netdev,rw  0 0
 
 #### Setup a Samba Share and NFS Share
 
+Server Message Block is a protocol that can be used to share access to files, printers and other resources. 
+
+The name of the protocol has changed to cifs  (common internet filesystem), many packages still use the SMB terminology
+
 ```bash
 # install Samba packages
 yum install samba -y
@@ -79,9 +83,9 @@ Add the following:
 
 ```
 [share]
-browsable = yes
-path = /smb
-writable = yes
+       browsable = yes
+       path = /smb
+       writable = yes
 ```
 
 ```bash

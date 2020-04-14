@@ -1,8 +1,8 @@
 # Controlling Access through Firewall and SELinux
 
 * A firewall is a protective layer that is configured between private and a public network to segregate traffic. It enables users to control network traffic on host machines by defining a set of firewall rules
-* RHEL comes with a host-based packet-filtering firewall software called `iptables` that communicates with the `netfilter` module in the kernel for policing the flow of data packets
-* netfilter is a set of hooks inside the Linux kernel that allows the kernel modules to register callback functions with the network stack. A registered callback function is then called back for every packet that traverses the respective hook within the network stack
+* RHEL comes with a host-based packet-filtering firewall software called `iptables` that communicates with the `Netfilter` module in the kernel for policing the flow of data packets
+* `Netfilter` is a set of hooks inside the Linux kernel that allows the kernel modules to register callback functions with the network stack. A registered callback function is then called back for every packet that traverses the respective hook within the network stack
 
 ####  iptables and firewalld
 
@@ -16,7 +16,9 @@
 See which packages are installed 
 
 ```bash
-$ yum list installed | egrep 'iptables|firewalld'
+yum list installed | egrep 'iptables|firewalld'
+# install packages
+yum install firewalld firewall-config
 ```
 
 Stop firewalld and enable iptables
@@ -162,10 +164,22 @@ yum install setools-console
 seinfo -u
 # determine the context of a process
 ps -eZ
+ps  auxZ | grep httpd
 # see context information for a file
 ll -Z /etc/passwd
 # change to permissive
 setenforce permissive
+# add a new context
+semanage fcontext -a -t httpdsys '/content(/.*)?'
+restorecon -R /content
+```
+
+Troubleshoot issues: 
+
+```bash
+yum install setroubleshoot-server
+# get troubleshooting information 
+sealert -a /var/log/audit/audit.log
 ```
 
 #### GPG2

@@ -29,7 +29,7 @@ ext3 onwards support a journaling mechanism that keeps track of their structural
 
 ```bash
 # show file system utilization
-df
+df -hT
 # calculate disk usage of directories and file systems
 du
 # displays block device attributes
@@ -44,7 +44,7 @@ blkid /dev/sr0
 xfs_admin -l /dev/vda1
 ```
 
-Label a file system
+Label a file system:
 
 ```bash
 xfs_admin -l /dev/sda1
@@ -59,20 +59,27 @@ mount -o remount,ro /boot
 
 * With ACLs, you can give selected users rwx permissions to selected files in your home directory
 * This provides a second level of discretionary access control
-* To configure ACLs the filesystem needs to be mounted with the acl option. ACLs are supported on XFS and NFS v4. 
+* To configure ACLs the filesystem needs to be mounted with the acl option. ACLs are supported on XFS and NFS v4
 
 ```bash
 # see the ACLs for the file 
 getfacl anaconda-ks.cfg
 ```
 
-Prevent a user from accessing a file:
+Changing ACLs: 
 
 ```bash
+# Prevent a user from accessing a file
 setfacl -m u:acl_user:- /etc/sysconfig/network-scripts/ifcfg-lo
 # see the changes on the file 
 getfacl /etc/sysconfig/network-scripts/ifcfg-lo
 # to revet the changes
 setfacl -b /etc/sysconfig/network-scripts/ifcfg-lo
+# give a user permissions
+setfacl -m g:acl_group:rwx directory/
+# remove all acls from a directory
+setfacl -b directory/
+# set a default acl for newly created files
+setfacl -d -m g:acl_group:rwx /directory/
 ````
 

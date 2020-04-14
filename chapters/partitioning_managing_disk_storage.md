@@ -145,6 +145,31 @@ umount /dev/sdb1
 mount -a
 ```
 
+We can grow a mount point: 
+
+```bash
+lvextend -L+200M /dev/RHCSA/pinehead
+# resize the filesystem
+xfs_growfs /mnt/lvol
+```
+
+Grow a current mount point: 
+
+```bash
+# add to the Logical Volume
+pvcreate /dev/nvme3n1
+vgextend vdoDev /dev/nvme3n1
+lvextend -l +100%FREE /dev/vdoDev/vdoLV
+
+# extend physical disk and logical size
+vdo growPhysical --name=LA
+vdo growLogical --name=LA --vdoLogicalSize=180G
+
+# grow the filesystem 
+partprobe
+xfs_growfs /mnt/vdo
+```
+
 #### fstab & mtab files
 
 The default in RHEL is to use UUIDs to mount non-LVM filesystems. They can represent a partition, a logical volume, or a RAID array. We can verify how partitions are actually mounted ni the `/etc/mtab` file. 
