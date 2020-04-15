@@ -109,4 +109,5 @@ Setup the Samba Client on another instance
 yum install cifs-utils -y
 # make mount poubt
 mkdir /mnt/smb
+mount -t cifs //<IP_OF_SERVER>/share /mnt/smb -o username=shareuser,password=<PASSWORD_SET_WITH_SMBPASSWD>
 ```

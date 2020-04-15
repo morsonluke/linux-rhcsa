@@ -93,9 +93,11 @@ grubby --set-default-index=1
   # enter a new password
   passwd
   # create an empty hidden file called .autorelabel at the root of the directory tree to instruct the system to perform SELinux relabelling
-  touch /.autorelabel
+  touch .autorelabel
   exit
-  reboot
+  # we can run another command at the emergency prompt
+  switch_root:/# mount - remount,ro /sysroot
+  logout
 ```
 
 #### Linux Kernel
@@ -103,6 +105,10 @@ grubby --set-default-index=1
 ```bash
   # determine the Kernel version
   uname -r
+  # see available kernels
+  yum list kernel
+  rpm -qa | grep kernel-[0-9]
+  sudo grubby --info=ALL
   # view currently loaded modules
   lsmod
   # see detail about a module
@@ -111,6 +117,8 @@ grubby --set-default-index=1
   cat /proc/version
   # see infomation about a moduke
   modinfo dm_mirror
+  # change a default module
+  grub2-set-default 2
 ```
 
 #### init and Upstart

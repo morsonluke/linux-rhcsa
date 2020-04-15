@@ -81,5 +81,7 @@ setfacl -m g:acl_group:rwx directory/
 setfacl -b directory/
 # set a default acl for newly created files
 setfacl -d -m g:acl_group:rwx /directory/
+# remove default in current directory
+setfacl -k  .
 ````
 

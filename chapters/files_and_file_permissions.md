@@ -262,7 +262,7 @@ Use setgid for Group collaboration
 ```bash
 # add group sdatagrp 
 groupadd -g 9999 sdatagrp
-# add users
+# add users to group
 usermod -G sdatagrp user100
 usermod -G sdatagrp user200
 # create directory

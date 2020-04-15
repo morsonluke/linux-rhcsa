@@ -84,6 +84,8 @@ chage -l student
 chage -m 10 -M 30 -W 7 -E 2020-12-31 student
 # prompt to change at next login, disable account expiry
 chage -d 0 -m 5 -E -1 student
+# set an account to expirt 10 days from now
+chage -E $(date -d "+10 days" "+%Y-%m-%d") user1
 # delete user
 userdel -r user4
 ```

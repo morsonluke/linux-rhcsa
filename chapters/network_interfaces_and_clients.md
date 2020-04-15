@@ -25,6 +25,8 @@ cat /etc/services | less
 cat /etc/sysconfig/network-scripts/ifcfg-eth0
 ```
 
+#### DNS Resolution
+
 * The `/etc/nsswitch.conf` file specifies the database search priorities for "everything"
 * The `/etc/hosts` file can be used for small internal networks for hostname to IP resolution. DNS is used for larger networks
 * `/etc/resolv.conf` is the standard file for documenting the location of DNS servers
@@ -43,8 +45,8 @@ traceroute -n server2
 A network protocol called ARP maps the Ethernet address to the destination node's IP address.
 
 ```bash
-  # network configuration files are stored here
-   /etc/sysconfig/network-scripts/
+# network configuration files are stored here
+/etc/sysconfig/network-scripts/
 ```
 
 A number of commands are available to administer network interfaces. 
@@ -114,14 +116,34 @@ ip route
 Network Time Protocol is a networking protocol for syncronising the system clock with a reliable remote time clock. 
 
 ```bash
+# this can be used to select a timezone
+tzselect
+# set the timezone
+timedatectl set-timezone London/Europe
+```
+
+An older protocol is ntpd which is replaced by chronyd in RHE7:
+
+```bash
 yum -y install ntp system-config-date
 # review the servers configured
 grep ^server /etc/ntp.conf
 # start the service
 systemctl enable ntpd
-systemctl start ntpdn
+systemctl start ntpd
 # see the output
 ntpq -p
+```
+
+Another service `chronyd` and the program used to interact with the service is `chronyc`
+
+```bash
+# using chronyd
+systemctl status chronyd
+chronyc trackin
+chronyc sources
+# view configuration 
+view /etc/chrony.conf
 ```
 
 The NTP client functionality can also be configured using the **System-Config-Date** graphical tool. 
