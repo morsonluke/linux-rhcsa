@@ -103,3 +103,33 @@ A few key points and not a full guide. This allows for a GUI installation which 
 Using VirtualBox is buggy and slow. An easier way using just the CLI:
 
 * [Creating the labs Using Vagrant](https://github.com/AnwarYagoub/RHCSA-RHCE-Lab-Environment)
+
+#### Using a VM on a VM!
+
+We may use a virtual machine on a Red Hat VM:
+
+```bash
+# see what virtual machines exist on the system
+virsh list --all
+# install Virtual Machine Manager
+yum -y  install virt-manager
+virt-manager
+```
+
+We can then play and then open the VM. At this point we realise that we don't have the password. Reboot the machine and on the lit of kernels, choose the first one and enter `e`: 
+
+```bash
+# at the end the line starting linux16 add rd.break
+# ctrl + x
+# mount the /sysroot directory
+mount -o remount,rw /sysroot/
+# make new root environment
+chroot /sysroot
+# set root password
+passwd root
+# ensure SELinux relabels the system when it boots
+touch .autorelabel
+exit
+mount - remount,ro /sysroot/
+logout
+```

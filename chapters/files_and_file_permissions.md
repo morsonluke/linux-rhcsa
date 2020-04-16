@@ -129,7 +129,7 @@ The find command is very powerful as it can recursively search the directory tre
 It takes the form `find path search option action`
 
 ```bash
-# find a file in the home directory
+# find a file in the hom e directory
 find . -name -filetofind -print
 # find files large than 100MB in /proc directory
 find /proc -size +100M
@@ -139,6 +139,8 @@ find / -type d -perm -1000
 find / -name core -ok rm {} \;
 # find files modified in the last 10 days and show file type
 find / -type f -mtime -10 -exec file {} \;
+# find files in /etc/ only modified in last x days
+find /etc/ -maxdepth 1 -mtime +720 > /root/oldfiles
 ```
 
 #### Linking Files/Directories
@@ -209,7 +211,7 @@ chown newuser:newgroup newfile
 chown -R user100:user100 dir
 ```
 
-We can see how the umask is defined in `/etc/profile`:
+We can see how the umask is defined in `/etc/profile`. To change if for new files we would need to ensure that we also change `/etc/bashrc`.
 
 ```bash
 if [ $UID -gt 199 ] && [ "`/usr/bin/id -gn`" = "`/usr/bin/id -un`" ]; then

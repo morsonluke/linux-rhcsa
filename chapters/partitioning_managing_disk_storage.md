@@ -170,6 +170,27 @@ partprobe
 xfs_growfs /mnt/vdo
 ```
 
+#### Create a swap partition 
+
+```bash
+# see current
+fdisk -l 
+fdisk /dev/vdb
+# n to create a new partion 
+# +1000M for the ending sector
+# l for partition types
+# t to set swap partition numnber
+# w to safe changes
+partprobe
+# make a swap 
+mkswap /dev/vdb1 
+# edit /etc/fstab
+UUID="" swap        swap    defaults        0 0
+# verify
+swapon -a
+free
+```
+
 #### fstab & mtab files
 
 The default in RHEL is to use UUIDs to mount non-LVM filesystems. They can represent a partition, a logical volume, or a RAID array. We can verify how partitions are actually mounted ni the `/etc/mtab` file. 
@@ -208,6 +229,13 @@ systemctl start autofs
 systemctl enable autofs
 # list the configuration files
 ls -ltr /etc/auto*
+```
+
+Set an SSL and configure autofs:
+
+```bash
+yum -y install authconfig-gtk nss-pam-ldapd pam_krb5 autofs nfs-utils openldap-clients
+authconfig-gtk
 ```
 
 #### Disk Compression (Virtual Disk Optimizer)

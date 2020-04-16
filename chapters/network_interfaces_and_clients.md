@@ -10,6 +10,16 @@ cat /etc/hostname
 nmcli general hostname
 ```
 
+If a netwok interface has been disabled  we can do a quick test: 
+
+```bash
+# check what interfaces we have
+ip a s
+nmcli con show
+# bring up the interface
+nmcli con up eth0
+```
+
 An IP address is four dot-separated octets divided into a network portion and a node portion. Network addresses are classified into three classes (uninspiringly) A, B & C.
 
 Subnetting is a method by which a large network address space can be divided into several smaller ones called subnets. 

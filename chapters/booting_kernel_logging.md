@@ -62,6 +62,15 @@ grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
 # 
 ```
 
+### Modify GRUB Timeout
+
+```bash
+# edit config file
+vi /etc/default/grub
+# rebuild grub configuration 
+grub2-mkconfig
+```
+
 #### Modify GRUB Boot Order
 
 ```bash

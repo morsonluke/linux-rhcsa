@@ -41,6 +41,23 @@ firewall-cmd --reload
 systemctl restart httpd
 ```
 
+If we have issues it could be to do with SELinux. If we changed the default directory for example it may not have the correct permissions:
+
+```bash
+# check SELinux permissions
+ls -lZ /var/web
+# check what permissions it should have from default location 
+ls -lZ /var/www/html
+# see what packages we need to manage these
+yum provides \*/semanagee
+# install packag
+yum -y install policycoreutils-python
+# change context
+semanage fcontext -a -t httpd_sys_content_t '/var/web(/.*)?'
+# apply changes to filesystem
+restorecon -R /var/web
+```
+
 #### SSL/TLS
 
 Secure Socket Layer (SSL) is a cryptographic protocol that allows networked systems to communicate securely. Apache webservers that operate on top of SSL/TLS may be referred to as HTTPS or SSL web servers.
