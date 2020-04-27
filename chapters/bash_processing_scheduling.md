@@ -136,6 +136,7 @@ There are three quoting mechanisms that disbable their special meanings which ar
 ```bash
   # see statistics in real time 
   top
+  htop
   # sort processes by memory in top
   shift + m
   # renice a process in top
