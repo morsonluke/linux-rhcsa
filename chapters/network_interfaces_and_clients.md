@@ -38,12 +38,21 @@ cat /etc/sysconfig/network-scripts/ifcfg-eth0
 #### DNS Resolution
 
 * The `/etc/nsswitch.conf` file specifies the database search priorities for "everything"
+
+```yaml
+# order defined in /etc/nsswitch.conf
+hosts:      files dns myhostname
+```
+
 * The `/etc/hosts` file can be used for small internal networks for hostname to IP resolution. DNS is used for larger networks
 * `/etc/resolv.conf` is the standard file for documenting the location of DNS servers
 
 The ping command send out 64-byte Internet Control Message Protocol test packets.
 
 ```bash
+# install bind-utils
+yum install bind-utils
+host linuxacademy.com
 # send two packets to google 
 ping -c2 8.8.8.8
 # install traceroute
