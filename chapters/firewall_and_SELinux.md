@@ -11,7 +11,15 @@
 * `firewalld` is a firewall service daemon that provides a dynamic customizable host-based firewall with a D-Bus interface
 * The firewalld service can be interact with using the graphical utility `firewall-config` or the command-line client `firewall-cmd`
 * `firewalld` uses the concept of zones and services. Zones are predifined set of rules. Network interfaces and sources can be assigned to a zone
-* iptables and firewalld both rely on the Netfilter system with the Linux kernel to filter packages. Whereas iptables is based on "chain of filter rules" to block or forward traffic, firewalld is "zone-based"
+* iptables and firewalld both rely on the Netfilter system with the Linux kernel to filter packages. Whereas iptables is based on "chain of filter rules" to block or forward traffic, firewalld is "zone-based". Netfilter provides a set of hooks for actions on network activities
+
+| IPTABLES | Description |
+| --- | --- | 
+| `Filter Table` | Used for determining if a packet is  permitted to continue or be denied  |
+| `NAT Table` | Used for performing NAT rules by determining how to modify a packet's source or destination address to effect routing |
+| `Mangle Table` | Used for altering the IP headers of a packet |
+| `Raw Table` | Used for opting out of connection tracking |
+| `Security Table` | Used for setting SELinux security context values on packets or connections |
 
 See which packages are installed 
 
