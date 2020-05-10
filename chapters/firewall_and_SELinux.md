@@ -150,6 +150,24 @@ iptables -I INPUT -p tcp -s 10.0.1.11 --dport 80 -j ACCEPT
 service iptables save
 ```
 
+Audit access in a client/server setup: 
+
+```bash
+# check something is listening on port 80
+ss -lntp | grep :80
+curl -I localhost
+systemctl status firewalld
+# see the firewall rules
+firewall-cmd --list-all
+# create a new zone
+firewall-cmd --permanent --new-zone=api
+firewall-cmd --reload
+# add http service
+firewall-cmd --permanent --zone=api --add-service=http
+firewall-cmd --permanent --zone=api --add-source=10.0.1.11
+firewall-cmd --reload
+```
+
 #### SELinux
 
 * Stands for Security Enhanced Linux and is an implementation of the Mandatory Access Control (MAC) architecture
