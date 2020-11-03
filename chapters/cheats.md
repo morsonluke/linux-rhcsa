@@ -23,3 +23,10 @@
 | `L` | Move to the bottom of the window | 
 | `yy` FOLLOWED BY `P` | Copy the line, move the cursor then insert below the cursor | 
 | `o` | Insert line after cursor |
+
+#### Misc
+
+```bash
+# generate a random string
+cat /dev/urandom | head -c16 | xxd -p | cut -c1-32
+```
