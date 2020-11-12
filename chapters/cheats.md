@@ -29,4 +29,8 @@
 ```bash
 # generate a random string
 cat /dev/urandom | head -c16 | xxd -p | cut -c1-32
+
+# see the meaning of different flags such as if [[ -z ${X} ]]; then 
+man test
 ```
+
