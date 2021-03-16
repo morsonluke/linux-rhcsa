@@ -1,17 +1,6 @@
-# Linux RHCSA
+## Linux RHCSA
 
-Notes for RHCSA EX200 exam. Notes from:
-
-| Title | Authors |
-| --- | --- |
-| RHCSA/RHCE Red Hat Linux Certification Study Guide | Michael Jang & Alessandro Orsaria |
-| RHCSA & RHCE RHEL 7 | Asghar Ghori |
-| Operating Systems 4th Edition | Andrew S. Tanenbaum & Herbert Bos |
-| Udemy: "Prepare RHCSA Exams with Real Exam Practice Test" | Sanjaya Regmi |
-| How Linux Works | Briand Ward |
-| Red Hat Certified System Administrator (EX200) - RHCSA Exam Prep | Linux Academy | 
-
-*** 
+> Notes for the RHCSA EX200 exam
 
 #### RHCSA
 
@@ -48,7 +37,7 @@ Notes for RHCSA EX200 exam. Notes from:
 #### Networking
 
 Networking and Troubleshooting:
-* 1:[General Concepts](networking/networking_and_troubleshooting/general.md)
+* 1: [General Concepts](networking/networking_and_troubleshooting/general.md)
 * 2: [Network Interfaces](networking/networking_and_troubleshooting/network_interface.md)
 * 3: [Connection Testing](networking/networking_and_troubleshooting/connection_testing.md)
 
@@ -59,3 +48,16 @@ Other:
 #### Cheatsheets
 
 * [Cheatsheet](/chapters/cheats.md)
+
+***
+
+Notes from:
+
+| Title | Authors |
+| --- | --- |
+| RHCSA/RHCE Red Hat Linux Certification Study Guide | Michael Jang & Alessandro Orsaria |
+| RHCSA & RHCE RHEL 7 | Asghar Ghori |
+| Operating Systems 4th Edition | Andrew S. Tanenbaum & Herbert Bos |
+| Udemy: "Prepare RHCSA Exams with Real Exam Practice Test" | Sanjaya Regmi |
+| How Linux Works | Briand Ward |
+| Red Hat Certified System Administrator (EX200) - RHCSA Exam Prep | Linux Academy | 
