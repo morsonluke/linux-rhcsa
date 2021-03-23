@@ -34,3 +34,10 @@ cat /dev/urandom | head -c16 | xxd -p | cut -c1-32
 man test
 ```
 
+```bash
+# view recently visited directories
+pushd +0
+
+# change location
+pushd +2
+```

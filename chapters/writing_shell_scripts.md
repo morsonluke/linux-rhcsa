@@ -144,3 +144,18 @@ fi
 * for-do-done
 * while-do-done
 * until-do-done
+
+#### Set Builtin
+
+`set` allows you to change the values of a shell options and set the positional paramaters, or to display the names and values of shell variables
+
+```bash
+# print a trace of simple commands
+set -o xtrace
+
+# treat unset variables and parameters as an error
+set -o nounset
+
+# return  status is the last command to exit with a non-zero status
+set -o pipefail
+```
