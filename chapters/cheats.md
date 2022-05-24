@@ -32,6 +32,11 @@ cat /dev/urandom | head -c16 | xxd -p | cut -c1-32
 
 # see the meaning of different flags such as if [[ -z ${X} ]]; then 
 man test
+
+# see the type of a command for the builtin command command
+type command
+# get help 
+help command
 ```
 
 ```bash

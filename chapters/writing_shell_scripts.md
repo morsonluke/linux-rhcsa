@@ -22,7 +22,7 @@ exit 0
 
 #### Bash Script Examples
 
-Variables: 
+Variables:
 
 ```bash
 # assign a variabled
@@ -104,6 +104,33 @@ man
 echo $?
 ```
 
+We can see how we can run the following script to see if a command actually exists: 
+
+```bash
+pre_gh() {
+  # validate the command run exists otherwise provide instructions
+  # &> /dev/null redirects the standard outpout to the null device
+  if ! command -v boom &> /dev/null
+  then
+    echo -e "\tnot sure it is a real command"
+    # return non-zero 
+    return 1
+  fi
+}
+
+_pre_gh
+# the result of the last command
+echo $?
+```
+
+This will return:
+
+```
+not sure it is a real command
+# the result of $? where 0 is true
+1
+```
+
 #### Conditional Logic
 
 ```bash
@@ -119,7 +146,7 @@ echo "Script terminated"
 
 We also have 
 
-```
+```bash
 # if-then-else-fi
 if
 then 

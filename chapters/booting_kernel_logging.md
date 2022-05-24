@@ -16,13 +16,13 @@ The boot process on an x86 computer can be split into 4 main phases: Firmware ph
 * An error in `grub.cfg` can result in an unbootable system
 
 ```bash
-  # configuration available in /etc/grub2.cfg which is a ln
-  ls -ltr /etc/grub2.cfg
-  # see the defined GRUB behavior
-  /etc/default/grub
-  # reproduce the grub.cfg file
-  grub2-mkconfig -o /boot/grub2/grub.cfg
-  grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+# configuration available in /etc/grub2.cfg which is a ln
+ls -ltr /etc/grub2.cfg
+# see the defined GRUB behavior
+/etc/default/grub
+# reproduce the grub.cfg file
+grub2-mkconfig -o /boot/grub2/grub.cfg
+grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
 ```
 
 #### Using the GRUB 2 Command Line
@@ -59,7 +59,6 @@ rm -f /etc/default/grub
 yum install grub2-tools
 # attempt to re-created the grub.cfg file
 grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
-# 
 ```
 
 ### Modify GRUB Timeout
@@ -85,49 +84,49 @@ grubby --set-default-index=1
 #### Resetting the Root User Password
 
 ```bash
-  # we can update the password without seeing it
-  pwmake 128 | passwd --stdin root
-  # interact with GRUB as shown above
-  # find boot string that starts with linux16 and append
-  init=/sysroot/bin/sh
-  # or append rd.break. This interrupts the boot sequence before the root filesystem is mounted
-  rb.break
-  # confirm presence of root filesystem
-  ls /sysroot
-  # enters emergency mode
-  # remounte root file system in read/write mode
-  mount -o remount,rw /sysroot
-  # change root filesystem 
-  chroot /sysroot
-  # enter a new password
-  passwd
-  # create an empty hidden file called .autorelabel at the root of the directory tree to instruct the system to perform SELinux relabelling
-  touch .autorelabel
-  exit
-  # we can run another command at the emergency prompt
-  switch_root:/# mount - remount,ro /sysroot
-  logout
+# we can update the password without seeing it
+pwmake 128 | passwd --stdin root
+# interact with GRUB as shown above
+# find boot string that starts with linux16 and append
+init=/sysroot/bin/sh
+# or append rd.break. This interrupts the boot sequence before the root filesystem is mounted
+rb.break
+# confirm presence of root filesystem
+ls /sysroot
+# enters emergency mode
+# remounte root file system in read/write mode
+mount -o remount,rw /sysroot
+# change root filesystem 
+chroot /sysroot
+# enter a new password
+passwd
+# create an empty hidden file called .autorelabel at the root of the directory tree to instruct the system to perform SELinux relabelling
+touch .autorelabel
+exit
+# we can run another command at the emergency prompt
+switch_root:/# mount - remount,ro /sysroot
+logout
 ```
 
 #### Linux Kernel
 
 ```bash
-  # determine the Kernel version
-  uname -r
-  # see available kernels
-  yum list kernel
-  rpm -qa | grep kernel-[0-9]
-  sudo grubby --info=ALL
-  # view currently loaded modules
-  lsmod
-  # see detail about a module
-  modinfo kvm
-  # see info about kernel
-  cat /proc/version
-  # see infomation about a moduke
-  modinfo dm_mirror
-  # change a default module
-  grub2-set-default 2
+# determine the Kernel version
+uname -r
+# see available kernels
+yum list kernel
+rpm -qa | grep kernel-[0-9]
+sudo grubby --info=ALL
+# view currently loaded modules
+lsmod
+# see detail about a module
+modinfo kvm
+# see info about kernel
+cat /proc/version
+# see infomation about a moduke
+modinfo dm_mirror
+# change a default module
+grub2-set-default 2
 ```
 
 #### init and Upstart
@@ -164,31 +163,31 @@ systemctl get-default
 Units are systemd objects that used for organizing boot and maintenance taks. systemctl is the primary command for interaction with systemd.
 
 ```bash
-  # list all known units and their status
-  systemctl
-  # see units of type socket
-  systemctl -t mount --all
-  # see loaded and active targets
-  systemctl -t target
+# list all known units and their status
+systemctl
+# see units of type socket
+systemctl -t mount --all
+# see loaded and active targets
+systemctl -t target
 ```
 
 Targets are logical collection of units. They are a special systemd unit type with the .target file extension. 
 
 ```bash 
-  # list all service units
-  systemctl list-units --type=service --all
-  # list all units of type socket
-  systemctl list-sockets
-  # lit unit files
-  systemctl list-unit-files
-  # check the status of atd
-  systemctl status atd
-  # list dependencies
-  systemctl list-dependencies atd
-  # show details for the atd service
-  systemctl show atd
-  # view time spent by each task during the boot process
-  systemd-analyze blame
+# list all service units
+systemctl list-units --type=service --all
+# list all units of type socket
+systemctl list-sockets
+# lit unit files
+systemctl list-unit-files
+# check the status of atd
+systemctl status atd
+# list dependencies
+systemctl list-dependencies atd
+# show details for the atd service
+systemctl show atd
+# view time spent by each task during the boot process
+systemd-analyze blame
 ```
 
 #### Switch Between Targets
