@@ -80,10 +80,6 @@ In this case I had to remove other repos to make this work first:
   reboot
 ```
 
-#### Setting up a Digital Ocean Droplet
-
-One option is to set up a cheap cloud Linux machine (CentOS 7) for testing. I did this on Digital Ocean as I documented [here](https://morsonluke.github.io/projects/droplet/).
-
 #### Using Virtualbox
 
 A few key points and not a full guide. This allows for a GUI installation which is needed for elements of the exam.
