@@ -1,6 +1,6 @@
 # Constructing and Using File Systems and Swap
 
-A file systme is a logical container that is used to store files and directories that is created in a separate partition or logical volume. 
+A file system is a logical container that is used to store files and directories that is created in a separate partition or logical volume. 
 
 There are several different types of file systems that can be categorized in theree basic groups: disk-based, network-based and memory-based. 
 

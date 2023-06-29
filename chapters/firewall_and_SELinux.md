@@ -193,7 +193,7 @@ ps -eZ
 ps  auxZ | grep httpd
 # see context information for a file
 ll -Z /etc/passwd
-# change to permissive
+# change to permissive in order to debug if an issue is SELINUX related for example
 setenforce permissive
 # add a new context
 semanage fcontext -a -t httpdsys '/content(/.*)?'
@@ -206,6 +206,12 @@ Troubleshoot issues:
 yum install setroubleshoot-server
 # get troubleshooting information 
 sealert -a /var/log/audit/audit.log
+```
+
+When a scenario is blocked by SELINUX, the `/var/log/audit/audit.log` is the first place to look. The `ausearch` tool is used to search the audit logs.
+
+```bash
+ausearch -m AVC,USER_AVC,SELINUX_ERR,USER_SELINUX_ERR -ts recent
 ```
 
 #### GPG2
