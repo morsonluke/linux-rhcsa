@@ -171,8 +171,10 @@ firewall-cmd --reload
 #### SELinux
 
 * Stands for Security Enhanced Linux and is an implementation of the Mandatory Access Control (MAC) architecture
+* SELinux adds to the Discrentionary Access Control system (DAC) which restricts object access via an access policy determined by an object's owner group and/or subjects (ie. what we'd see if we run ls -l file1)
 * SELinux decisions are stored in a cache area referred to as Access Vector Cache (AVC)
 * SELinux security model is based on subjects, objects and actions
+* SELinux policy is administratively-defined, enforced system-wide, and is not set as user discretion
 
 | `/etc/selinux/config` | Description | 
 | --- | --- |

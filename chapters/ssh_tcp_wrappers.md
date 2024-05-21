@@ -96,4 +96,8 @@ Nmap is an open source tool for network exploration and security auditing.
 ```bash
 # see what ports are open on the localhost
 nmap localhost
+# see the version running on an accessible host
+nmap -sV <iP>
+# scan all ports and attempt to speed it up 
+nmap -v 10.129.131.103 -p- -T5
 ````
